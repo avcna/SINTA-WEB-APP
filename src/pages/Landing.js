@@ -11,7 +11,7 @@ import Foto from "../assets/user/whyman.png";
 import Bullet from "../assets/svg/ulbullet.svg";
 import Card from "../components/Card";
 
-const CarouselDiv1 = styled.div`
+export const CarouselDiv1 = styled.div`
   height: 500px;
   background: url(${Carousel1});
   background-size: cover;
@@ -35,7 +35,7 @@ const CarouselDiv4 = styled.div`
   background-size: cover;
 `;
 
-const Title = styled.p`
+export const Title = styled.p`
   font-family: Inter;
   font-size: 28px;
   font-weight: 600;
