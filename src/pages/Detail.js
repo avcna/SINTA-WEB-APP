@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-import { CarouselDiv1 } from "./Landing";
+import { CarouselDiv1 } from "./Home";
 import Carousel1 from "../assets/user/destinasi1.png";
 import { Layout } from "antd";
 import {
@@ -14,14 +14,14 @@ import { useState } from "react";
 
 const { Sider, Content } = Layout;
 
-const Title = styled.p`
+export const Title = styled.p`
   font-family: "Inter";
   font-weight: 600;
   font-size: 36px;
   line-height: 44px;
 `;
 
-const NavLink = styled.div`
+export const NavLink = styled.div`
   border-radius: 8px;
   padding: 36px;
   flex-grow: 1;
@@ -45,7 +45,11 @@ const Nav = styled.div`
 `;
 
 const Detail = () => {
-  const [value, setValue] = useState("a");
+  const [value, setValue] = useState("deskripsi");
+
+  const handleNav = (val) => {
+    setValue(val);
+  };
 
   return (
     <>
@@ -57,26 +61,54 @@ const Detail = () => {
         <Content>
           <Section>
             <Nav>
-              <NavLink value="deskripsi" className="clicked">
+              <NavLink
+                className={value == "deskripsi" ? "clicked" : ""}
+                onClick={(e) => {
+                  handleNav("deskripsi");
+                }}
+              >
                 Deskripsi
               </NavLink>
               <NavLink
-                value="info"
+                className={value == "info" ? "clicked" : ""}
                 onClick={(e) => {
-                  setValue(e.target.value);
-                  console.log(value);
+                  handleNav("info");
                 }}
               >
                 Info Penting
               </NavLink>
-              <NavLink value="rundown">Rundown</NavLink>
-              <NavLink value="fasilitas">Fasilitas</NavLink>
-              <NavLink value="harga">Harga</NavLink>
+              <NavLink
+                className={value == "rundown" ? "clicked" : ""}
+                onClick={(e) => {
+                  handleNav("rundown");
+                }}
+              >
+                Rundown
+              </NavLink>
+              <NavLink
+                className={value == "fasilitas" ? "clicked" : ""}
+                onClick={(e) => {
+                  handleNav("fasilitas");
+                }}
+              >
+                Fasilitas
+              </NavLink>
+              <NavLink
+                className={value == "harga" ? "clicked" : ""}
+                onClick={(e) => {
+                  handleNav("harga");
+                }}
+              >
+                Harga
+              </NavLink>
             </Nav>
             <Title>Paket Wisata Pantai Malang Selatan Full Trip</Title>
           </Section>
-          <Deskripsi deskripsi="Bosan dengan aktifitas sehari – hari dan ingin liburan yang menyenangkan? Kini kami telah menyediakan paket wisata pantai malang khusus bagi anda yang ingin mencari  suasana liburan yang baru dan menyenangkan. Berbeda dengan tempat wisata pantai  lainnya, tujuan wisata kali ini adalah Pantai CMC (Clungup Mangrove Conservation) yang merupakan Pantai paling eksotis dan paling luxury di kota Malang. Bahkan bisa dibilang pantai paling luxury di Jawa Timur. Mengingat untuk menuju Ke Pantai ini dibutuhkan Reservasi dan tidak setiap orang dapat tiba – tiba datang dan masuk begitu saja. Terkait trip kali ini, berikut destinasi-destinasi yang akan kita tuju." />
-          <InfoPenting />
+          {value == "deskripsi" ? (
+            <Deskripsi deskripsi="Bosan dengan aktifitas sehari – hari dan ingin liburan yang menyenangkan? Kini kami telah menyediakan paket wisata pantai malang khusus bagi anda yang ingin mencari  suasana liburan yang baru dan menyenangkan. Berbeda dengan tempat wisata pantai  lainnya, tujuan wisata kali ini adalah Pantai CMC (Clungup Mangrove Conservation) yang merupakan Pantai paling eksotis dan paling luxury di kota Malang. Bahkan bisa dibilang pantai paling luxury di Jawa Timur. Mengingat untuk menuju Ke Pantai ini dibutuhkan Reservasi dan tidak setiap orang dapat tiba – tiba datang dan masuk begitu saja. Terkait trip kali ini, berikut destinasi-destinasi yang akan kita tuju." />
+          ) : null}
+          {value == "info" ? <InfoPenting /> : null}
+
           <ContactUs wa="https://www.google.com/" />
         </Content>
         <Sider style={{ background: "none" }} width={462}>

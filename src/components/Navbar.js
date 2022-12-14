@@ -24,11 +24,11 @@ const Navbar = () => {
     <>
       <Nav>
         <NavMenu>
-          <NavLink to="">Trip Dalam Negeri</NavLink>
-          <NavLink to="">Trip Luar Negeri</NavLink>
-          <NavLink to="">FAQ</NavLink>
-          <NavLink to="">Tentang Kami</NavLink>
-          <NavLink to="">Bergabung Menjadi Agen</NavLink>
+          <NavLink to="/tripDalamNegeri">Trip Dalam Negeri</NavLink>
+          <NavLink to="/tripLuarNegeri">Trip Luar Negeri</NavLink>
+          <NavLink to="/faq">FAQ</NavLink>
+          <NavLink to="/tentangKami">Tentang Kami</NavLink>
+          <NavLink to="/bergabungMenjadiAgen">Bergabung Menjadi Agen</NavLink>
         </NavMenu>
       </Nav>
     </>

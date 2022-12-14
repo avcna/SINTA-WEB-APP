@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Title } from "../pages/Landing";
+import { Title } from "../pages/Home";
 
 export const Section = styled.section`
   margin: 56px 48px 56px 100px;
@@ -9,7 +9,7 @@ const TitleDesc = styled(Title)`
   line-height: 44px;
 `;
 
-const Desc = styled.p`
+export const Desc = styled.p`
   font-family: "Inter";
   font-weight: 400;
   font-size: 18px;
