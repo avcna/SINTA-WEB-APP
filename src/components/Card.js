@@ -44,7 +44,7 @@ const Price = styled(PlaceName)`
   color: #ff5a4f;
 `;
 
-const Card = () => {
+const Card = ({ placename, location, price }) => {
   return (
     <>
       <CardBase>
@@ -52,8 +52,8 @@ const Card = () => {
           style={{ background: `url(${Carousel1})`, backgroundSize: "cover" }}
         />
         <DescDiv>
-          <PlaceName>Paket Wisata Pantai Malang Selatan Full Trip</PlaceName>
-          <Location>Malang</Location>
+          <PlaceName>{placename}</PlaceName>
+          <Location>{location}</Location>
           <Location
             style={{
               textDecorationLine: "line-through",
@@ -62,7 +62,7 @@ const Card = () => {
           >
             IDR 165.000
           </Location>
-          <Price>IDR 370.000</Price>
+          <Price>{price}</Price>
         </DescDiv>
       </CardBase>
     </>

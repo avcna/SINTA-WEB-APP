@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Footer from "../components/Footer";
+import Footer, { Helper } from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Carousel } from "antd";
 import Carousel1 from "../assets/user/carousel1.png";
@@ -10,28 +10,15 @@ import { Row, Col } from "antd";
 import Foto from "../assets/user/whyman.png";
 import Bullet from "../assets/svg/ulbullet.svg";
 import Card from "../components/Card";
+import axios from "axios";
+import { sintaAPI } from "../config/Api";
+import { useState } from "react";
+import { useEffect } from "react";
+import Carousels from "../components/Carousel";
 
 export const CarouselDiv1 = styled.div`
   height: 500px;
   background: url(${Carousel1});
-  background-size: cover;
-`;
-
-const CarouselDiv2 = styled.div`
-  height: 500px;
-  background: url(${Carousel2});
-  background-size: cover;
-`;
-
-const CarouselDiv3 = styled.div`
-  height: 500px;
-  background: url(${Carousel3});
-  background-size: cover;
-`;
-
-const CarouselDiv4 = styled.div`
-  height: 500px;
-  background: url(${Carousel4});
   background-size: cover;
 `;
 
@@ -65,32 +52,37 @@ const Section = styled.section`
 `;
 
 const Landing = () => {
+  const [trip, setTrip] = useState([]);
+  const handleAPI = async () => {
+    try {
+      const response = await sintaAPI.get("/trip/getall").then((res) => {
+        setTrip(res.data.data);
+        console.log("success");
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    handleAPI();
+  }, []);
   return (
     <>
       <Navbar />
-      <Carousel autoplay dotPosition="bottom">
-        <CarouselDiv1 />
-        <CarouselDiv2 />
-        <CarouselDiv3 />
-        <CarouselDiv4 />
-      </Carousel>
+      <Carousels />
       <Main>
         {/* -------------------batas------------------------ */}
         <Section>
           <Title>Ayo liburan ke destinasi menarik di dalam negeri!</Title>
           <Row style={{ display: "flex", justifyContent: "space-between" }}>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
+            {trip.map((trip) => {
+              const { id, deskripsi } = trip;
+              return (
+                <Col key={trip.id} {...trip}>
+                  <Card placename={deskripsi.judul} />
+                </Col>
+              );
+            })}
           </Row>
         </Section>
         {/* -------------------batas------------------------*/}

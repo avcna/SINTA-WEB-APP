@@ -1,8 +1,14 @@
 import Navbar from "../components/Navbar";
 import { Title, NavLink as Link } from "./Detail";
-import { Desc, Section } from "../components/DetailComponents";
+import { ContactUs, Desc, Section } from "../components/DetailComponents";
 import styled from "styled-components";
 import { Rumah } from "../assets/svg/Vector";
+import {
+  HubungiKami,
+  Portofolio,
+  TentangKami,
+} from "../components/ProfileComponents";
+import Footer from "../components/Footer";
 
 const ProfilePict = styled.div`
   width: 150px;
@@ -64,6 +70,17 @@ const Profile = () => {
           <NavLink>Hubungi Kami</NavLink>
         </Nav>
       </Section>
+      <Section>
+        <Portofolio />
+      </Section>
+      <Section>
+        <TentangKami />
+      </Section>
+      <Section>
+        <HubungiKami />
+      </Section>
+      <ContactUs wa="https://www.google.com/" />
+      <Footer />
     </>
   );
 };
