@@ -53,16 +53,37 @@ const Section = styled.section`
 
 const Landing = () => {
   const [trip, setTrip] = useState([]);
+  const [trips, setTrips] = useState([]);
+
   const handleAPI = async () => {
     try {
-      const response = await sintaAPI.get("/trip/getall").then((res) => {
-        setTrip(res.data.data);
-        console.log("success");
-      });
+      const response = await sintaAPI
+        .get("/trip/get/kategori?kategori=lokal")
+        .then((res) => {
+          setTrip(res.data.data);
+          console.log("sukses");
+        });
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handle500 = async () => {
+    try {
+      const response = await sintaAPI
+        .get("/trip/get/price?maxPrice=500000")
+        .then((res) => {
+          setTrips(res.data.data);
+          console.log("sukses 500");
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    handle500();
+  }, []);
+
   useEffect(() => {
     handleAPI();
   }, []);
@@ -76,10 +97,15 @@ const Landing = () => {
           <Title>Ayo liburan ke destinasi menarik di dalam negeri!</Title>
           <Row style={{ display: "flex", justifyContent: "space-between" }}>
             {trip.map((trip) => {
-              const { id, deskripsi } = trip;
+              const { id, deskripsi, kota, provinsi } = trip;
               return (
-                <Col key={trip.id} {...trip}>
-                  <Card placename={deskripsi.judul} />
+                <Col key={id} {...trip}>
+                  <Card
+                    judul={deskripsi.judul}
+                    kota={kota}
+                    provinsi={provinsi}
+                    // harga={deskripsi.harga["1-3 orang"]}
+                  />
                 </Col>
               );
             })}
@@ -89,18 +115,19 @@ const Landing = () => {
         <Section>
           <Title>Ayo liburan ke destinasi menarik di luar negeri!</Title>
           <Row style={{ display: "flex", justifyContent: "space-between" }}>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
+            {trips.map((trips) => {
+              const { id, deskripsi, kota, provinsi } = trips;
+              return (
+                <Col key={id} {...trips}>
+                  <Card
+                    judul={deskripsi.judul}
+                    kota={kota}
+                    provinsi={provinsi}
+                    // harga={deskripsi.harga["1-3 orang"]}
+                  />
+                </Col>
+              );
+            })}
           </Row>
         </Section>
         {/* -------------------batas------------------------*/}

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
+import logo from "../assets/user/logo.svg";
 
 const Nav = styled.nav`
-  padding: 21px 100px;
+  padding: 32px 100px 21px;
 `;
 
 const NavMenu = styled.div``;
@@ -19,10 +20,17 @@ const NavLink = styled(Link)`
   color: black;
 `;
 
+const Navbrand = styled(Link)`
+  margin-top: 64px;
+`;
+
 const Navbar = () => {
   return (
     <>
       <Nav>
+        <Navbrand to="/">
+          <img src={logo}></img>
+        </Navbrand>
         <NavMenu>
           <NavLink to="/tripDalamNegeri">Trip Dalam Negeri</NavLink>
           <NavLink to="/tripLuarNegeri">Trip Luar Negeri</NavLink>

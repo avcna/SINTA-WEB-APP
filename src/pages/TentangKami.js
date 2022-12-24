@@ -6,11 +6,11 @@ import Footer from "../components/Footer";
 import SuitcaseGuy from "../assets/user/suitcaseGuy.png";
 import { Col, Row } from "antd";
 
-const Margin = styled.body`
+export const Margin = styled.body`
   margin: 102px 136px 120px;
 `;
 
-const Section = styled.section`
+export const Section = styled.section`
   dispaly: flex;
   justify-content: space-between;
 `;

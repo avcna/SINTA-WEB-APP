@@ -2,7 +2,6 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import agent from "../assets/user/agent.png";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -22,7 +21,7 @@ const TitlePage = styled.p`
   color: #000000;
 `;
 
-export const TitleInput = styled.p`
+const TitleInput = styled.p`
   font-family: "Inter";
   font-weight: 500;
   font-size: 14px;
@@ -38,17 +37,17 @@ const Text = styled.p`
   color: #212121;
 `;
 
-export const RequiredSign = styled.span`
+const RequiredSign = styled.span`
   color: red;
 `;
-export const Input = styled.input`
+const Input = styled.input`
   border: 1px solid #abbed1;
   border-radius: 6px;
   padding: 10px 16px;
   width: 100%;
 `;
 
-export const InputWrapper = styled.div`
+const InputWrapper = styled.div`
   display: flex;
   align-items: stretch;
 `;
@@ -67,30 +66,17 @@ const SubmitBtn = styled.button`
   line-height: 14px;
 `;
 
-const Register = () => {
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-    } catch (error) {
-      console.log("error");
-    }
-  };
+const Login = () => {
+  const handleLogin = () => {};
   return (
     <>
       <Navbar />
       <Section>
         <img src={agent} />
-        <FormWrapper onSubmit={handleRegister}>
+        <FormWrapper onSubmit={handleLogin}>
           <TitlePage>Daftarkan Akunmu Disini</TitlePage>
           <TitleInput>
-            Email<RequiredSign>*</RequiredSign>
-          </TitleInput>
-          <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
-          </InputWrapper>
-
-          <TitleInput>
-            Username<RequiredSign>*</RequiredSign>
+            Email/Username<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
             <Input placeholder="Masukkan akun email anda disini" required />
@@ -98,20 +84,6 @@ const Register = () => {
 
           <TitleInput>
             Password<RequiredSign>*</RequiredSign>
-          </TitleInput>
-          <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
-          </InputWrapper>
-
-          <TitleInput>
-            Konfirmasi Password<RequiredSign>*</RequiredSign>
-          </TitleInput>
-          <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
-          </InputWrapper>
-
-          <TitleInput>
-            Nama Badan Usaha<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
             <Input placeholder="Masukkan akun email anda disini" required />
@@ -124,7 +96,7 @@ const Register = () => {
             }}
           >
             <Text>Sudah punya akun?</Text>
-            <SubmitBtn type="submit">Sign Up</SubmitBtn>
+            <SubmitBtn type="submit">Login</SubmitBtn>
           </div>
         </FormWrapper>
       </Section>
@@ -133,4 +105,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
