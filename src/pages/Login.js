@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import agent from "../assets/user/agent.png";
 import Footer from "../components/Footer";
+import { NavLink } from "react-router-dom";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -95,7 +96,9 @@ const Login = () => {
               marginTop: "40px",
             }}
           >
-            <Text>Sudah punya akun?</Text>
+            <Text>
+              Belum punya akun? <NavLink to="/register">Register</NavLink>
+            </Text>
             <SubmitBtn type="submit">Login</SubmitBtn>
           </div>
         </FormWrapper>

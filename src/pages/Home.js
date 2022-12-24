@@ -62,6 +62,7 @@ const Landing = () => {
 
   const [trip, setTrip] = useState([]);
   const [trips, setTrips] = useState([]);
+  const [tripHarga, setTripHarga] = useState([]);
 
   const handleAPI = async () => {
     try {
@@ -90,6 +91,20 @@ const Landing = () => {
       console.log(error.message);
     }
   };
+
+  const handleHarga = async () => {
+    try {
+      const response = await sintaAPI
+        .get("/trip/get/price?maxPrice=500000")
+        .then((res) => {
+          setTripHarga(res.data.data);
+          console.log("sukses");
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
     handleAPI();
     handle500();
@@ -141,19 +156,20 @@ const Landing = () => {
         {/* -------------------batas------------------------*/}
         <Section>
           <Title>Under 500k udah bisa jalan-jalan, lho!</Title>
-          <Row style={{ display: "flex", justifyContent: "space-between" }}>
-            <Col span={6}>
-              <Card />
-            </Col>
-            <Col span={6}>
-              <Card />
-            </Col>
-            <Col span={6}>
-              <Card />
-            </Col>
-            <Col span={6}>
-              <Card />
-            </Col>
+          <Row>
+            {tripHarga.map((tripHarga) => {
+              const { id, deskripsi, kota, provinsi } = tripHarga;
+              return (
+                <Col span={6} key={id} {...trips}>
+                  <Card
+                    judul={deskripsi.judul}
+                    kota={kota}
+                    provinsi={provinsi}
+                    // harga={deskripsi.harga["1-3 orang"]}
+                  />
+                </Col>
+              );
+            })}
           </Row>
         </Section>
         {/* -------------------batas------------------------*/}

@@ -4,6 +4,8 @@ import man from "../assets/user/Man1.png";
 import woman from "../assets/user/Woman1.png";
 import { Title } from "./Detail";
 import { Desc } from "../components/DetailComponents";
+import { SubmitBtn } from "./Register";
+import { NavLink } from "react-router-dom";
 
 const BergabungMenjadiAgent = () => {
   return (
@@ -35,6 +37,12 @@ const BergabungMenjadiAgent = () => {
       <Row>
         <Col>
           <img src={woman} />
+        </Col>
+        <Col>
+          Tunggu Apalagi
+          <NavLink to="/login">
+            <SubmitBtn>Bergabung Menjadi Agen</SubmitBtn>
+          </NavLink>
         </Col>
       </Row>
     </>

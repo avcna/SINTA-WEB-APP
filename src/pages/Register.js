@@ -56,7 +56,7 @@ export const InputWrapper = styled.div`
   align-items: stretch;
 `;
 
-const SubmitBtn = styled.button`
+export const SubmitBtn = styled.button`
   padding: 16px 69px;
   gap: 10px;
   background: #0053ad;
