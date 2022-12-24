@@ -52,41 +52,49 @@ const Section = styled.section`
 `;
 
 const Landing = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
+
   const [trip, setTrip] = useState([]);
   const [trips, setTrips] = useState([]);
 
   const handleAPI = async () => {
     try {
-      const response = await sintaAPI
-        .get("/trip/get/kategori?kategori=lokal")
+      const response = await axios
+        .get(
+          "https://sintaapp-production.up.railway.app/trip/get/kategori?kategori=lokal"
+        )
         .then((res) => {
           setTrip(res.data.data);
           console.log("sukses");
         });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
   const handle500 = async () => {
     try {
       const response = await sintaAPI
-        .get("/trip/get/price?maxPrice=500000")
+        .get("/trip/get/kategori?kategori=internasional")
         .then((res) => {
           setTrips(res.data.data);
           console.log("sukses 500");
         });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
   useEffect(() => {
+    handleAPI();
     handle500();
   }, []);
 
-  useEffect(() => {
-    handleAPI();
-  }, []);
   return (
     <>
       <Navbar />
@@ -99,7 +107,7 @@ const Landing = () => {
             {trip.map((trip) => {
               const { id, deskripsi, kota, provinsi } = trip;
               return (
-                <Col key={id} {...trip}>
+                <Col span={6} key={id} {...trip}>
                   <Card
                     judul={deskripsi.judul}
                     kota={kota}
@@ -114,7 +122,7 @@ const Landing = () => {
         {/* -------------------batas------------------------*/}
         <Section>
           <Title>Ayo liburan ke destinasi menarik di luar negeri!</Title>
-          <Row style={{ display: "flex", justifyContent: "space-between" }}>
+          <Row gutter={[48, 48]}>
             {trips.map((trips) => {
               const { id, deskripsi, kota, provinsi } = trips;
               return (
@@ -134,16 +142,16 @@ const Landing = () => {
         <Section>
           <Title>Under 500k udah bisa jalan-jalan, lho!</Title>
           <Row style={{ display: "flex", justifyContent: "space-between" }}>
-            <Col>
+            <Col span={6}>
               <Card />
             </Col>
-            <Col>
+            <Col span={6}>
               <Card />
             </Col>
-            <Col>
+            <Col span={6}>
               <Card />
             </Col>
-            <Col>
+            <Col span={6}>
               <Card />
             </Col>
           </Row>

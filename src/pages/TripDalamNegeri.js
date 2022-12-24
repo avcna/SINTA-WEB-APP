@@ -40,7 +40,7 @@ const TDN = () => {
         </Sider>
         <Content style={{ background: "#FFFFFF" }}>
           <Title>Trip Dalam Negeri</Title>
-          <Row gutter={[0, 64]}>
+          <Row gutter={[48, 64]}>
             {trip.map((trip) => {
               const { id, deskripsi, kota, provinsi } = trip;
               return (

@@ -9,7 +9,7 @@ export const CardBase = styled.div`
 `;
 
 export const CardImage = styled.div`
-  width: 274px;
+  max-width: 274px;
   height: 160px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;

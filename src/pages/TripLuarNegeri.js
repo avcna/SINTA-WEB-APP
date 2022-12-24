@@ -39,11 +39,11 @@ const TLN = () => {
         </Sider>
         <Content style={{ background: "#FFFFFF" }}>
           <Title>Trip Luar Negeri</Title>
-          <Row gutter={[0, 64]}>
+          <Row gutter={[48, 64]}>
             {trip.map((trip) => {
               const { id, deskripsi, kota, provinsi } = trip;
               return (
-                <Col span={8} key={trip.id} {...trip}>
+                <Col span={8} key={id} {...trip}>
                   <Card
                     judul={deskripsi.judul}
                     kota={kota}

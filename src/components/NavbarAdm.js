@@ -20,7 +20,7 @@ const NavLink = styled(Link)`
 const NavbarAdm = () => {
   return (
     <>
-      <Sider style={{ background: "none" }}>
+      <Sider style={{ background: "#F5F7FA", height: "100vh" }}>
         <img src={logo} width="120px" />
         <NavLink to="/beranda">Beranda</NavLink>
         <NavLink to="/paketWisata">Paket Wisata</NavLink>

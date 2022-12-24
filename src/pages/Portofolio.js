@@ -1,16 +1,24 @@
 import { Layout } from "antd";
 import NavbarAdm from "../components/NavbarAdm";
 import { Title, Dashboard } from "../components/AgentComponents";
-import { TitleInput, RequiredSign, InputWrapper, Input } from "./Register";
+import styled from "styled-components";
+import {
+  TitleInput,
+  RequiredSign,
+  InputWrapper,
+  Input as In,
+} from "./Register";
 
 const { Content } = Layout;
-
+const Input = styled(In)`
+  max-width: 479px;
+`;
 const Portofolio = () => {
   return (
     <>
       <Layout style={{ background: "none" }}>
         <NavbarAdm />
-        <Content>
+        <Content style={{ padding: "39px 39px" }}>
           <Dashboard>Dashboard Agen</Dashboard>
           <Title>Form Upload Portofolio</Title>
           <TitleInput>

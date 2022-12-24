@@ -2,7 +2,10 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import agent from "../assets/user/agent.png";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
+import { sintaAPI } from "../config/Api";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -68,11 +71,48 @@ const SubmitBtn = styled.button`
 `;
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [forms, setForms] = useState({
+    email: "",
+    username: "",
+    password: "",
+    namaBadanUsaha: "",
+  });
+
+  const [formsL, setFormsL] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      const registerResponse = await sintaAPI.post("/agent/create", {
+        ...forms,
+      });
+
+      if (registerResponse.data.success) {
+        try {
+          const loginresponse = await sintaAPI.post("/agent/login", {
+            ...forms.email,
+            ...forms.password,
+          });
+          console.log(loginresponse);
+
+          if (loginresponse.data.success) {
+            const id = registerResponse.data.data.id;
+            window.ID = id;
+
+            const currentUser = await sintaAPI.get(`/agent/get/${id}`);
+          } else {
+            navigate("/beranda", { replace: true });
+          }
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
     } catch (error) {
-      console.log("error");
+      console.log(error.message);
     }
   };
   return (
@@ -86,21 +126,40 @@ const Register = () => {
             Email<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
+            <Input
+              placeholder="Masukkan akun email anda disini"
+              required
+              onChange={(e) =>
+                setForms(() => ({ ...forms, email: e.target.value }))
+              }
+            />
           </InputWrapper>
 
           <TitleInput>
             Username<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
+            <Input
+              placeholder="Masukkan akun email anda disini"
+              required
+              onChange={(e) =>
+                setForms(() => ({ ...forms, username: e.target.value }))
+              }
+            />
           </InputWrapper>
 
           <TitleInput>
             Password<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
+            <Input
+              placeholder="Masukkan akun email anda disini"
+              required
+              type="password"
+              onChange={(e) =>
+                setForms(() => ({ ...forms, password: e.target.value }))
+              }
+            />
           </InputWrapper>
 
           <TitleInput>
@@ -114,7 +173,13 @@ const Register = () => {
             Nama Badan Usaha<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
+            <Input
+              placeholder="Masukkan akun email anda disini"
+              required
+              onChange={(e) =>
+                setForms(() => ({ ...forms, namaBadanUsaha: e.target.value }))
+              }
+            />
           </InputWrapper>
           <div
             style={{
@@ -123,7 +188,9 @@ const Register = () => {
               marginTop: "40px",
             }}
           >
-            <Text>Sudah punya akun?</Text>
+            <Text>
+              Sudah punya akun?<NavLink to="/login">Login</NavLink>
+            </Text>
             <SubmitBtn type="submit">Sign Up</SubmitBtn>
           </div>
         </FormWrapper>
