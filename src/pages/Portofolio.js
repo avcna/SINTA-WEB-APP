@@ -2,6 +2,7 @@ import { Layout } from "antd";
 import NavbarAdm from "../components/NavbarAdm";
 import { Title, Dashboard } from "../components/AgentComponents";
 import styled from "styled-components";
+import { useEffect } from "react";
 import {
   TitleInput,
   RequiredSign,
@@ -14,6 +15,13 @@ const Input = styled(In)`
   max-width: 479px;
 `;
 const Portofolio = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
   return (
     <>
       <Layout style={{ background: "none" }}>

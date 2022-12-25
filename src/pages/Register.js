@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import agent from "../assets/user/agent.png";
 import Footer from "../components/Footer";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { sintaAPI } from "../config/Api";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";

@@ -4,6 +4,9 @@ import agent from "../assets/user/agent.png";
 import Footer from "../components/Footer";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
+import { useState } from "react";
+import { sintaAPI } from "../config/Api";
+import { useNavigate } from "react-router-dom";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -76,7 +79,34 @@ const Login = () => {
       document.body.style.zoom = initialValue;
     };
   }, []);
-  const handleLogin = () => {};
+
+  const [formsL, setFormsL] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const loginresponse = await sintaAPI.post("/agent/login", {
+        ...formsL,
+      });
+      console.log(loginresponse);
+
+      if (loginresponse.data.success) {
+        console.log("sukses login");
+        const id = loginresponse.data.data.agent.id;
+        window.ID = id;
+
+        const currentUser = await sintaAPI.get(`/agent/get/${id}`);
+        navigate("/beranda", { replace: true });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -88,14 +118,27 @@ const Login = () => {
             Email/Username<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
+            <Input
+              placeholder="Masukkan akun email anda disini"
+              required
+              onChange={(e) =>
+                setFormsL(() => ({ ...formsL, email: e.target.value }))
+              }
+            />
           </InputWrapper>
 
           <TitleInput>
             Password<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
+            <Input
+              type="password"
+              placeholder="Masukkan akun email anda disini"
+              required
+              onChange={(e) =>
+                setFormsL(() => ({ ...formsL, password: e.target.value }))
+              }
+            />
           </InputWrapper>
           <div
             style={{
