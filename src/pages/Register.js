@@ -6,6 +6,7 @@ import { Form, useNavigate } from "react-router-dom";
 import { sintaAPI } from "../config/Api";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -71,6 +72,13 @@ export const SubmitBtn = styled.button`
 `;
 
 const Register = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
   const navigate = useNavigate();
   const [forms, setForms] = useState({
     email: "",
@@ -78,7 +86,6 @@ const Register = () => {
     password: "",
     namaBadanUsaha: "",
   });
-
   const [formsL, setFormsL] = useState({
     email: "",
     password: "",
@@ -90,29 +97,30 @@ const Register = () => {
       const registerResponse = await sintaAPI.post("/agent/create", {
         ...forms,
       });
+      console.log(registerResponse);
 
       if (registerResponse.data.success) {
+        console.log("sukses");
         try {
           const loginresponse = await sintaAPI.post("/agent/login", {
-            ...forms.email,
-            ...forms.password,
+            ...formsL,
           });
           console.log(loginresponse);
 
           if (loginresponse.data.success) {
+            console.log("sukses login");
             const id = registerResponse.data.data.id;
             window.ID = id;
 
             const currentUser = await sintaAPI.get(`/agent/get/${id}`);
-          } else {
             navigate("/beranda", { replace: true });
           }
         } catch (error) {
-          console.log(error.message);
+          console.log(error);
         }
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
   return (
@@ -127,11 +135,13 @@ const Register = () => {
           </TitleInput>
           <InputWrapper>
             <Input
+              type="email"
               placeholder="Masukkan akun email anda disini"
               required
-              onChange={(e) =>
-                setForms(() => ({ ...forms, email: e.target.value }))
-              }
+              onChange={(e) => {
+                setForms(() => ({ ...forms, email: e.target.value }));
+                setFormsL(() => ({ ...formsL, email: e.target.value }));
+              }}
             />
           </InputWrapper>
 
@@ -140,11 +150,12 @@ const Register = () => {
           </TitleInput>
           <InputWrapper>
             <Input
-              placeholder="Masukkan akun email anda disini"
+              placeholder="Masukkan akun username anda disini"
               required
-              onChange={(e) =>
-                setForms(() => ({ ...forms, username: e.target.value }))
-              }
+              onChange={(e) => {
+                setForms(() => ({ ...forms, username: e.target.value }));
+                setFormsL(() => ({ ...formsL, email: e.target.value }));
+              }}
             />
           </InputWrapper>
 
@@ -156,9 +167,10 @@ const Register = () => {
               placeholder="Masukkan akun email anda disini"
               required
               type="password"
-              onChange={(e) =>
-                setForms(() => ({ ...forms, password: e.target.value }))
-              }
+              onChange={(e) => {
+                setForms(() => ({ ...forms, password: e.target.value }));
+                setFormsL(() => ({ ...formsL, password: e.target.value }));
+              }}
             />
           </InputWrapper>
 
@@ -166,7 +178,11 @@ const Register = () => {
             Konfirmasi Password<RequiredSign>*</RequiredSign>
           </TitleInput>
           <InputWrapper>
-            <Input placeholder="Masukkan akun email anda disini" required />
+            <Input
+              type="password"
+              placeholder="Masukkan akun email anda disini"
+              // required
+            />
           </InputWrapper>
 
           <TitleInput>

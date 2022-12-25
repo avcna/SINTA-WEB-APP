@@ -3,6 +3,7 @@ import styled from "styled-components";
 import agent from "../assets/user/agent.png";
 import Footer from "../components/Footer";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -68,6 +69,13 @@ const SubmitBtn = styled.button`
 `;
 
 const Login = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
   const handleLogin = () => {};
   return (
     <>
