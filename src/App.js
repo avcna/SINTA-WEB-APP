@@ -12,6 +12,8 @@ import BergabungMenjadiAgent from "./pages/BegabungMenjadiAgent";
 import Beranda from "./pages/Beranda";
 import Login from "./pages/Login";
 import Portofolio from "./pages/Portofolio";
+import AkunSaya from "./pages/AkunSaya";
+import ProfilSaya from "./pages/ProfilSaya";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/beranda" element={<Beranda />} />
           <Route path="/portofolio" element={<Portofolio />} />
+          <Route path="/akunSaya" element={<AkunSaya />} />
+          <Route path="/profilSaya" element={<ProfilSaya />} />
         </Routes>
       </BrowserRouter>
     </>

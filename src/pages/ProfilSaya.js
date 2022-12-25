@@ -3,9 +3,9 @@ import { Layout } from "antd";
 import { Dashboard, Info, Wrapper } from "../components/AgentComponents";
 import { useEffect } from "react";
 
-const { Sider, Content } = Layout;
+const { Content } = Layout;
 
-const Beranda = () => {
+const ProfilSaya = () => {
   useEffect(() => {
     const initialValue = document.body.style.zoom;
     document.body.style.zoom = "90%";
@@ -13,12 +13,12 @@ const Beranda = () => {
       document.body.style.zoom = initialValue;
     };
   }, []);
-  const pageValue = "beranda";
   return (
     <>
       <Layout
         style={{
-          background: "none",
+          background: "red",
+          height: "100%",
           position: "absolute",
           top: "0",
           right: "0",
@@ -26,11 +26,10 @@ const Beranda = () => {
           left: "0",
         }}
       >
-        <NavbarAdm style={{ background: "none" }} />
+        <NavbarAdm />
         <Content>
           <Wrapper>
-            <Dashboard>Dashboard Agen</Dashboard>
-            <Info>Halo, Selamat datang di task management dashboard agen</Info>
+            <Dashboard></Dashboard>
           </Wrapper>
         </Content>
       </Layout>
@@ -38,4 +37,4 @@ const Beranda = () => {
   );
 };
 
-export default Beranda;
+export default ProfilSaya;
