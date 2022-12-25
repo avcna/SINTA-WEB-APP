@@ -30,7 +30,7 @@ function App() {
             path="/bergabungMenjadiAgen"
             element={<BergabungMenjadiAgent />}
           />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

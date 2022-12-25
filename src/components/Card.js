@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Carousel1 from "../assets/user/destinasi1.png";
 
@@ -47,21 +48,23 @@ const Price = styled(PlaceName)`
   bottom: 0px;
 `;
 
-const Card = ({ judul, kota, provinsi, harga }) => {
+const Card = ({ id, judul, kota, provinsi, harga }) => {
   return (
     <>
-      <CardBase>
-        <CardImage
-          style={{ background: `url(${Carousel1})`, backgroundSize: "cover" }}
-        />
-        <DescDiv>
-          <PlaceName>{judul}</PlaceName>
-          <Location>
-            {kota}, {provinsi}
-          </Location>
-          <Price>IDR {harga}</Price>
-        </DescDiv>
-      </CardBase>
+      <NavLink to={"/detail/" + { id }}>
+        <CardBase>
+          <CardImage
+            style={{ background: `url(${Carousel1})`, backgroundSize: "cover" }}
+          />
+          <DescDiv>
+            <PlaceName>{judul}</PlaceName>
+            <Location>
+              {kota}, {provinsi}
+            </Location>
+            <Price>IDR {harga}</Price>
+          </DescDiv>
+        </CardBase>
+      </NavLink>
     </>
   );
 };

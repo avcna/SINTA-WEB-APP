@@ -11,6 +11,9 @@ import {
 } from "../components/DetailComponents";
 import "./style.css";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { sintaAPI } from "../config/Api";
+import { useEffect } from "react";
 
 const { Sider, Content } = Layout;
 
@@ -45,10 +48,38 @@ const Nav = styled.div`
 `;
 
 const Detail = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
+  let { id } = useParams();
   const [value, setValue] = useState("deskripsi");
+  const [detail, setDetail] = useState({
+    deskripsi: "",
+    wa: "",
+  });
 
   const handleNav = (val) => {
     setValue(val);
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await sintaAPI.get(`/agent/get/${id}`, {
+        params: {},
+      });
+      console.log("sukses");
+      setDetail({
+        deskripsi:
+          response.data.data.trip.deskripsi.detailDestinasi.description,
+        wa: response.data.data.whatsappKantor,
+      });
+    } catch (error) {
+      console.log("error");
+    }
   };
 
   return (
@@ -105,7 +136,7 @@ const Detail = () => {
             <Title>Paket Wisata Pantai Malang Selatan Full Trip</Title>
           </Section>
           {value == "deskripsi" ? (
-            <Deskripsi deskripsi="Bosan dengan aktifitas sehari – hari dan ingin liburan yang menyenangkan? Kini kami telah menyediakan paket wisata pantai malang khusus bagi anda yang ingin mencari  suasana liburan yang baru dan menyenangkan. Berbeda dengan tempat wisata pantai  lainnya, tujuan wisata kali ini adalah Pantai CMC (Clungup Mangrove Conservation) yang merupakan Pantai paling eksotis dan paling luxury di kota Malang. Bahkan bisa dibilang pantai paling luxury di Jawa Timur. Mengingat untuk menuju Ke Pantai ini dibutuhkan Reservasi dan tidak setiap orang dapat tiba – tiba datang dan masuk begitu saja. Terkait trip kali ini, berikut destinasi-destinasi yang akan kita tuju." />
+            <Deskripsi deskripsi={detail.deskripsi} />
           ) : null}
           {value == "info" ? <InfoPenting /> : null}
 
