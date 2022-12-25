@@ -6,8 +6,16 @@ import { Title } from "./Detail";
 import { Desc } from "../components/DetailComponents";
 import { SubmitBtn } from "./Register";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 const BergabungMenjadiAgent = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
   return (
     <>
       <Navbar />

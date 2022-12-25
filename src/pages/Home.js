@@ -15,6 +15,7 @@ import { sintaAPI } from "../config/Api";
 import { useState } from "react";
 import { useEffect } from "react";
 import Carousels from "../components/Carousel";
+import { NavLink as Link } from "react-router-dom";
 
 export const CarouselDiv1 = styled.div`
   height: 500px;
@@ -51,6 +52,18 @@ const Section = styled.section`
   margin-bottom: 132px;
 `;
 
+const NavLink = styled(Link)`
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.5px;
+  color: #0053ad;
+  text-decoration: none;
+  padding-top: 32px;
+`;
+
 const Landing = () => {
   useEffect(() => {
     const initialValue = document.body.style.zoom;
@@ -63,6 +76,7 @@ const Landing = () => {
   const [trip, setTrip] = useState([]);
   const [trips, setTrips] = useState([]);
   const [tripHarga, setTripHarga] = useState([]);
+  const [tripReq, setTripReq] = useState([]);
 
   const handleAPI = async () => {
     try {
@@ -85,7 +99,6 @@ const Landing = () => {
         .get("/trip/get/kategori?kategori=internasional")
         .then((res) => {
           setTrips(res.data.data);
-          console.log("sukses 500");
         });
     } catch (error) {
       console.log(error.message);
@@ -105,9 +118,23 @@ const Landing = () => {
     }
   };
 
+  const handleReq = async () => {
+    try {
+      const response = await sintaAPI
+        .get("/trip/get/requirement?requirement=false")
+        .then((res) => {
+          setTripHarga(res.data.data);
+          console.log("sukses");
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
     handleAPI();
     handle500();
+    handleReq();
   }, []);
 
   return (
@@ -117,17 +144,25 @@ const Landing = () => {
       <Main>
         {/* -------------------batas------------------------ */}
         <Section>
-          <Title>Ayo liburan ke destinasi menarik di dalam negeri!</Title>
-          <Row style={{ display: "flex", justifyContent: "space-between" }}>
-            {trip.map((trip) => {
-              const { id, deskripsi, kota, provinsi } = trip;
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <Title>Ayo liburan ke destinasi menarik di dalam negeri!</Title>
+            <NavLink to="/tripDalamNegeri">Lihat Selengkapnya</NavLink>
+          </div>
+          <Row>
+            {trip.slice(0, 4).map((trip) => {
+              const { id, deskripsi, kota, provinsi, harga } = trip;
               return (
                 <Col span={6} key={id} {...trip}>
                   <Card
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
-                    // harga={deskripsi.harga["1-3 orang"]}
+                    harga={harga["1-3 orang"]}
                   />
                 </Col>
               );
@@ -136,17 +171,26 @@ const Landing = () => {
         </Section>
         {/* -------------------batas------------------------*/}
         <Section>
-          <Title>Ayo liburan ke destinasi menarik di luar negeri!</Title>
-          <Row gutter={[48, 48]}>
-            {trips.map((trips) => {
-              const { id, deskripsi, kota, provinsi } = trips;
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <Title>Ayo liburan ke destinasi menarik di luar negeri!</Title>
+            <NavLink to="/tripLuarNegeri">Lihat Selengkapnya</NavLink>
+          </div>
+          <Row>
+            {trips.slice(0, 4).map((trips) => {
+              const { id, deskripsi, kota, provinsi, harga } = trips;
+
               return (
-                <Col key={id} {...trips}>
+                <Col span={6} key={id} {...trips}>
                   <Card
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
-                    // harga={deskripsi.harga["1-3 orang"]}
+                    harga={harga["1-3 orang"]}
                   />
                 </Col>
               );
@@ -157,15 +201,15 @@ const Landing = () => {
         <Section>
           <Title>Under 500k udah bisa jalan-jalan, lho!</Title>
           <Row>
-            {tripHarga.map((tripHarga) => {
-              const { id, deskripsi, kota, provinsi } = tripHarga;
+            {tripHarga.slice(0, 4).map((tripHarga) => {
+              const { id, deskripsi, kota, provinsi, harga } = tripHarga;
               return (
                 <Col span={6} key={id} {...trips}>
                   <Card
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
-                    // harga={deskripsi.harga["1-3 orang"]}
+                    harga={harga["1-3 orang"]}
                   />
                 </Col>
               );
@@ -176,18 +220,19 @@ const Landing = () => {
         <Section>
           <Title>Include semuanya tinggal bawa badan , lho!</Title>
           <Row style={{ display: "flex", justifyContent: "space-between" }}>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
-            <Col>
-              <Card />
-            </Col>
+            {tripReq.slice(0, 4).map((tripReq) => {
+              const { id, deskripsi, kota, provinsi, harga } = tripReq;
+              return (
+                <Col key={id} {...tripReq}>
+                  <Card
+                    judul={deskripsi.judul}
+                    kota={kota}
+                    provinsi={provinsi}
+                    harga={harga["1-3 orang"]}
+                  />
+                </Col>
+              );
+            })}
           </Row>
         </Section>
         <Title>Kenapa memilih SINTA?</Title>

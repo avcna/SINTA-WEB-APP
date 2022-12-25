@@ -10,6 +10,13 @@ import { useEffect } from "react";
 const { Sider, Content } = Layout;
 
 const TDN = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
   const [trip, setTrip] = useState([]);
   const fetchTDN = async () => {
     try {
@@ -42,13 +49,14 @@ const TDN = () => {
           <Title>Trip Dalam Negeri</Title>
           <Row gutter={[48, 64]}>
             {trip.map((trip) => {
-              const { id, deskripsi, kota, provinsi } = trip;
+              const { id, deskripsi, kota, provinsi, harga } = trip;
               return (
                 <Col span={8} key={id} {...trip}>
                   <Card
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
+                    harga={harga["1-3 orang"]}
                   />
                 </Col>
               );

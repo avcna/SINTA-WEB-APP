@@ -3,9 +3,10 @@ import Carousel1 from "../assets/user/destinasi1.png";
 
 export const CardBase = styled.div`
   box-shadow: 0px 2px 4px 0px #abbed199;
-  height: 330px;
+  height: 300px;
   max-width: 274px;
   border-radius: 12px;
+  position: relative;
 `;
 
 export const CardImage = styled.div`
@@ -42,6 +43,8 @@ const Price = styled(PlaceName)`
   font-size: 18px;
   line-height: 28px;
   color: #ff5a4f;
+  position: absolute;
+  bottom: 0px;
 `;
 
 const Card = ({ judul, kota, provinsi, harga }) => {
@@ -56,7 +59,7 @@ const Card = ({ judul, kota, provinsi, harga }) => {
           <Location>
             {kota}, {provinsi}
           </Location>
-          <Price>{harga}</Price>
+          <Price>IDR {harga}</Price>
         </DescDiv>
       </CardBase>
     </>

@@ -5,6 +5,7 @@ import { Desc } from "../components/DetailComponents";
 import Footer from "../components/Footer";
 import SuitcaseGuy from "../assets/user/suitcaseGuy.png";
 import { Col, Row } from "antd";
+import { useEffect } from "react";
 
 export const Margin = styled.body`
   margin: 102px 136px 120px;
@@ -16,6 +17,13 @@ export const Section = styled.section`
 `;
 
 const TentangKami = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
   return (
     <>
       <Navbar />
