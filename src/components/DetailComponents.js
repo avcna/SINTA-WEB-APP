@@ -82,7 +82,11 @@ export const ContactUs = ({ wa, tele }) => {
     <>
       <Section>
         <TitleDesc>Tertarik Untuk Memesannya? Hubungi Kami Di</TitleDesc>
-        <a style={{ textDecoration: "none" }} href={wa} target="_blank">
+        <a
+          style={{ textDecoration: "none" }}
+          href={`https://wa.me/${wa}`}
+          target="_blank"
+        >
           <Button style={{ background: "#25d366" }}>whatsapp</Button>
         </a>
         <a style={{ textDecoration: "none" }} href={tele} target="_blank">

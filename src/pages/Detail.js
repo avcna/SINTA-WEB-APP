@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { sintaAPI } from "../config/Api";
 import { useEffect } from "react";
+import Card from "../components/Card";
 
 const { Sider, Content } = Layout;
 
@@ -56,7 +57,7 @@ const Detail = () => {
     };
   }, []);
 
-  let { id } = useParams();
+  let { idTrip } = useParams();
   const [value, setValue] = useState("deskripsi");
   const [detail, setDetail] = useState({
     deskripsi: "",
@@ -69,18 +70,17 @@ const Detail = () => {
 
   const fetchData = async () => {
     try {
-      const response = await sintaAPI.get(`/agent/getbytrip/${id}`, {
+      const response = await sintaAPI.get(`/agent/getbytrip/${idTrip}`, {
         params: {},
       });
 
       console.log("sukses");
       setDetail({
-        deskripsi:
-          response.data.data.trip.deskripsi.detailDestinasi.description,
+        deskripsi: "response.data.data.trip.deskripsi.judul,",
         wa: response.data.data.whatsappKantor,
       });
     } catch (error) {
-      console.log("error");
+      console.log(error);
     }
   };
 
@@ -141,10 +141,12 @@ const Detail = () => {
             </Nav>
             <Title>Paket Wisata Pantai Malang Selatan Full Trip</Title>
           </Section>
-          {value == "deskripsi" ? <Deskripsi deskripsi="tes" /> : null}
+          {value == "deskripsi" ? (
+            <Deskripsi deskripsi={detail.deskripsi} />
+          ) : null}
           {value == "info" ? <InfoPenting /> : null}
 
-          <ContactUs wa="https://www.google.com/" />
+          <ContactUs wa={detail.wa} />
         </Content>
         <Sider style={{ background: "none" }} width={462}>
           tessss
