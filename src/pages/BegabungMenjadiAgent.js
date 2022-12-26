@@ -8,6 +8,7 @@ import { SubmitBtn } from "./Register";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { Margin, Section } from "./TentangKami";
+import Footer from "../components/Footer";
 
 const BergabungMenjadiAgent = () => {
   useEffect(() => {
@@ -51,7 +52,7 @@ const BergabungMenjadiAgent = () => {
             </Col>
             <Col flex="auto">
               <div>
-                <Title>Tertarik Bergabung Menjadi Agen?</Title>
+                <Title>Tunggu Apa Lagi?</Title>
                 <Desc style={{ width: "793px" }}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -75,6 +76,7 @@ const BergabungMenjadiAgent = () => {
           </Row>
         </Section>
       </Margin>
+      <Footer />
     </>
   );
 };

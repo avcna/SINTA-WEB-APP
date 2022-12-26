@@ -3,6 +3,7 @@ import { Title } from "./Detail";
 import { Desc } from "../components/DetailComponents";
 import { Margin, Section } from "./TentangKami";
 import { useEffect } from "react";
+import Footer from "../components/Footer";
 
 const FAQ = () => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const FAQ = () => {
           </Desc>
         </Section>
       </Margin>
+      <Footer />
     </>
   );
 };

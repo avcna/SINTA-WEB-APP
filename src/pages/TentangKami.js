@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import SuitcaseGuy from "../assets/user/suitcaseGuy.png";
 import { Col, Row } from "antd";
 import { useEffect } from "react";
+import fotoAtas from "../assets/user/layananKami0.png";
+import fotoBawah from "../assets/user/layananKami1.png";
 
 export const Margin = styled.body`
   margin: 102px 136px 120px;
@@ -55,6 +57,46 @@ const TentangKami = () => {
         </Section>
         <Section>
           <Title>Layanan Kami</Title>
+          <Row>
+            <Col flex={408}>
+              <img src={fotoAtas} />
+            </Col>
+            <Col flex="auto">
+              <Desc style={{ maxWidth: "813px" }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est
+                laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliq.
+              </Desc>
+            </Col>
+          </Row>
+          <Row>
+            <Col flex={408}>
+              <img src={fotoBawah} />
+            </Col>
+            <Col flex="auto">
+              <Desc style={{ maxWidth: "813px" }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est
+                laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliq.
+              </Desc>
+            </Col>
+          </Row>
         </Section>
         <Section>
           <Title>Kenapa Memilih Kami?</Title>

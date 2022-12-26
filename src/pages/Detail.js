@@ -55,6 +55,7 @@ const Detail = () => {
       document.body.style.zoom = initialValue;
     };
   }, []);
+
   let { id } = useParams();
   const [value, setValue] = useState("deskripsi");
   const [detail, setDetail] = useState({
@@ -68,9 +69,10 @@ const Detail = () => {
 
   const fetchData = async () => {
     try {
-      const response = await sintaAPI.get(`/agent/get/${id}`, {
+      const response = await sintaAPI.get(`/agent/getbytrip/${id}`, {
         params: {},
       });
+
       console.log("sukses");
       setDetail({
         deskripsi:
@@ -81,6 +83,10 @@ const Detail = () => {
       console.log("error");
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -135,9 +141,7 @@ const Detail = () => {
             </Nav>
             <Title>Paket Wisata Pantai Malang Selatan Full Trip</Title>
           </Section>
-          {value == "deskripsi" ? (
-            <Deskripsi deskripsi={detail.deskripsi} />
-          ) : null}
+          {value == "deskripsi" ? <Deskripsi deskripsi="tes" /> : null}
           {value == "info" ? <InfoPenting /> : null}
 
           <ContactUs wa="https://www.google.com/" />

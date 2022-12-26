@@ -23,14 +23,16 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/tripDalamNegeri" element={<TDN />} />
+          <Route path="/tripDalamNegeri/detail/:idTrip" element={<Detail />} />
           <Route path="/tripLuarNegeri" element={<TLN />} />
+          <Route path="/tripLuarNegeri/detail/:idTrip" element={<Detail />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/tentangKami" element={<TentangKami />} />
           <Route
             path="/bergabungMenjadiAgen"
             element={<BergabungMenjadiAgent />}
           />
-          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/detail/:idTrip" element={<Detail />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

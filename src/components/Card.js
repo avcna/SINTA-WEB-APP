@@ -51,7 +51,7 @@ const Price = styled(PlaceName)`
 const Card = ({ id, judul, kota, provinsi, harga }) => {
   return (
     <>
-      <NavLink to={"/detail/" + { id }}>
+      <NavLink to={`detail/${id}`}>
         <CardBase>
           <CardImage
             style={{ background: `url(${Carousel1})`, backgroundSize: "cover" }}

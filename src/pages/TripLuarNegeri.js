@@ -6,6 +6,7 @@ import Card from "../components/Card";
 import { useState } from "react";
 import { sintaAPI } from "../config/Api";
 import { useEffect } from "react";
+import Footer from "../components/Footer";
 
 const { Sider, Content } = Layout;
 
@@ -52,6 +53,7 @@ const TLN = () => {
               return (
                 <Col span={8} key={id} {...trip}>
                   <Card
+                    id={id}
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
@@ -63,6 +65,7 @@ const TLN = () => {
           </Row>
         </Content>
       </Layout>
+      <Footer />
     </>
   );
 };
