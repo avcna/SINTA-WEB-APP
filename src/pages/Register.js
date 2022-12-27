@@ -48,7 +48,7 @@ export const RequiredSign = styled.span`
 export const Input = styled.input`
   border: 1px solid #abbed1;
   border-radius: 6px;
-  padding: 10px 16px;
+  padding: 12px 16px;
   width: 100%;
 `;
 

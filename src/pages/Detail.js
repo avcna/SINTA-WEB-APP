@@ -76,7 +76,7 @@ const Detail = () => {
 
       console.log("sukses");
       setDetail({
-        deskripsi: "response.data.data.trip.deskripsi.judul,",
+        deskripsi: response.data.data.trip.deskripsi.judul,
         wa: response.data.data.whatsappKantor,
       });
     } catch (error) {
