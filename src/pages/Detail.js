@@ -8,6 +8,8 @@ import {
   Deskripsi,
   InfoPenting,
   ContactUs,
+  Rundown,
+  Fasilitas,
 } from "../components/DetailComponents";
 import "./style.css";
 import { useState } from "react";
@@ -62,6 +64,11 @@ const Detail = () => {
   const [value, setValue] = useState("deskripsi");
   const [detail, setDetail] = useState({
     deskripsi: "",
+    informasiPenting: "",
+    rundown: "",
+    fasilitasTermasuk: [],
+    fasilitasTidakTermasuk: [],
+    harga: "",
     wa: "",
   });
 
@@ -77,7 +84,12 @@ const Detail = () => {
 
       console.log("sukses");
       setDetail({
-        deskripsi: response.data.data.trip.deskripsi.judul,
+        deskripsi: response.data.data.trip[0].deskripsi.judul,
+        informasiPenting: response.data.data.trip[0].informasiPenting,
+        rundown: response.data.data.trip[0].linkRundown,
+        fasilitasTermasuk: response.data.data.trip[0].fasilitasTermasuk,
+        fasilitasTidakTermasuk:
+          response.data.data.trip[0].fasilitasTidakTermasuk,
         wa: response.data.data.whatsappKantor,
       });
     } catch (error) {
@@ -145,7 +157,16 @@ const Detail = () => {
           {value == "deskripsi" ? (
             <Deskripsi deskripsi={detail.deskripsi} />
           ) : null}
-          {value == "info" ? <InfoPenting /> : null}
+          {value == "info" ? (
+            <InfoPenting infoPenting={detail.informasiPenting} />
+          ) : null}
+          {value == "rundown" ? <Rundown rundown={detail.rundown} /> : null}
+          {value == "fasilitas" ? (
+            <Fasilitas
+              fasilitasTermasuk={detail.fasilitasTermasuk}
+              fasilitasTidakTermasuk={detail.fasilitasTidakTermasuk}
+            />
+          ) : null}
 
           <ContactUs wa={detail.wa} />
         </Content>

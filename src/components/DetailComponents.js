@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Title } from "../pages/Home";
+import "../pages/style.css";
 
 export const Section = styled.section`
   margin: 56px 48px 56px 100px;
@@ -65,12 +66,45 @@ export const InfoPenting = ({ infoPenting }) => {
   );
 };
 
-export const Rundown = () => {
-  return <></>;
+export const Rundown = ({ rundown }) => {
+  return (
+    <>
+      <Section style={{ position: "relative" }}>
+        <TitleDesc>Rundown Dari Paket Wisata</TitleDesc>
+        <Desc>
+          Untuk rundown atau itenary dari paket wisata ini, dapat dilihat dengan
+          mengklik tombol dibawah ini.
+        </Desc>
+        <a href={rundown} target="_blank" style={{ textAlign: "center" }}>
+          <Button
+            className="centerBtn"
+            style={{
+              background: "#0053AD",
+            }}
+          >
+            Lihat Rundown
+          </Button>
+        </a>
+      </Section>
+    </>
+  );
 };
 
-export const Fasilitas = () => {
-  return <></>;
+export const Fasilitas = ({ fasilitasTermasuk, fasilitasTidakTermasuk }) => {
+  return (
+    <>
+      <Section>
+        <TitleDesc style={{ color: "#009262" }}>
+          Fasilitas Yang Sudah Termasuk Dalam Paket Wisata
+        </TitleDesc>
+        <Desc>{fasilitasTermasuk}</Desc>
+        <TitleDesc style={{ color: "#E02B1D" }}>
+          Fasilitas Yang Tidak Termasuk Dalam Paket Wisata
+        </TitleDesc>
+        <Desc>{fasilitasTidakTermasuk}</Desc>
+      </Section>
+    </>
+  );
 };
 
 export const Harga = () => {

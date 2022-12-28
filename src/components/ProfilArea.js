@@ -4,11 +4,17 @@ import lokasi from "../assets/profilArea/location.svg";
 import wa from "../assets/profilArea/wa.svg";
 import tele from "../assets/profilArea/telegram.svg";
 import call from "../assets/profilArea/call.svg";
+import ig from "../assets/profilArea/insta.svg";
+import line from "../assets/profilArea/line.svg";
+import fb from "../assets/profilArea/fb.svg";
+import twt from "../assets/profilArea/twitter.svg";
 
 const Div = styled.div`
   padding: 30px 28px;
   box-shadow: 0px 2px 4px rgba(171, 190, 209, 0.6);
   border-radius: 8px;
+  margin-right: 100px;
+  margin-top: 56px;
 `;
 
 const Nama = styled.h1`
@@ -20,14 +26,50 @@ const Nama = styled.h1`
   display: block;
 `;
 
+const ProfileBtn = styled.button`
+  border-radius: 8px;
+  padding: 16px 24px 16px 24px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: #ffffff;
+  background: #0053ad;
+  border: none;
+  display: block;
+  width: 100%;
+`;
+
+const Foto = styled.div`
+  width: 99px;
+  height: 99px;
+  border-radius: 100%;
+  background: red;
+  position: absolute;
+  bottom: 0px;
+`;
+
 export const ProfilArea = ({ nama, kontak }) => {
   return (
     <>
       <Div>
-        <Row style={{ borderBottom: "1px solid #ABBED1" }}>
-          <Nama>Rahman Travel</Nama>
+        <Row
+          style={{
+            borderBottom: "1px solid #ABBED1",
+            paddingBottom: "32px",
+            marginBottom: "32px",
+          }}
+        >
+          <Col flex="99px" style={{ marginRight: "32px" }}>
+            <Foto />
+          </Col>
+          <Col flex="auto">
+            <Nama>Rahman Travel</Nama>
+            <ProfileBtn>Lihat Profil</ProfileBtn>
+          </Col>
         </Row>
-        <Row justify="space-between">
+        <Row justify="space-between" style={{ marginBottom: "24px" }}>
           {/* <Col span={24}>
             <Nama>Jangkau Kami Melalui :</Nama>
           </Col> */}
@@ -44,11 +86,19 @@ export const ProfilArea = ({ nama, kontak }) => {
             <img src={call} />
           </Col>
         </Row>
-        <Row justify="space-between">
-          <Col></Col>
-          <Col></Col>
-          <Col></Col>
-          <Col></Col>
+        <Row justify="space-between" style={{ marginBottom: "14px" }}>
+          <Col>
+            <img src={ig} />
+          </Col>
+          <Col>
+            <img src={line} />
+          </Col>
+          <Col>
+            <img src={fb} />
+          </Col>
+          <Col>
+            <img src={twt} />
+          </Col>
         </Row>
       </Div>
     </>

@@ -59,6 +59,7 @@ const TDN = () => {
                     kota={kota}
                     provinsi={provinsi}
                     harga={harga["1-3 orang"]}
+                    foto={deskripsi.cover}
                   />
                 </Col>
               );

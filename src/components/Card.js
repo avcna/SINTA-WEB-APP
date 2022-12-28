@@ -48,13 +48,17 @@ const Price = styled(PlaceName)`
   bottom: 0px;
 `;
 
-const Card = ({ id, judul, kota, provinsi, harga }) => {
+const Card = ({ id, judul, kota, provinsi, harga, foto }) => {
   return (
     <>
-      <NavLink to={`detail/${id}`}>
+      <NavLink style={{ color: "black" }} to={`detail/${id}`}>
         <CardBase>
           <CardImage
-            style={{ background: `url(${Carousel1})`, backgroundSize: "cover" }}
+            style={{
+              background: `url(data:image/jpeg;base64,${foto})`,
+              backgroundSize: "cover",
+            }}
+            // `data:image/jpeg;base64,${data.data.map.data.image}`
           />
           <DescDiv>
             <PlaceName>{judul}</PlaceName>
