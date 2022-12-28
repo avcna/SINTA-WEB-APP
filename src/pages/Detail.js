@@ -18,6 +18,7 @@ import { sintaAPI } from "../config/Api";
 import { useEffect } from "react";
 import Card from "../components/Card";
 import { ProfilArea } from "../components/ProfilArea";
+import { Loading } from "../components/Loader";
 
 const { Sider, Content } = Layout;
 
@@ -155,7 +156,10 @@ const Detail = () => {
             <Title>Paket Wisata Pantai Malang Selatan Full Trip</Title>
           </Section>
           {value == "deskripsi" ? (
-            <Deskripsi deskripsi={detail.deskripsi} />
+            <>
+              <Loading />
+              <Deskripsi deskripsi={detail.deskripsi} />
+            </>
           ) : null}
           {value == "info" ? (
             <InfoPenting infoPenting={detail.informasiPenting} />

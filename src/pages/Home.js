@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Carousels from "../components/Carousel";
 import { NavLink as Link } from "react-router-dom";
+import { Loading } from "../components/Loader";
 
 export const CarouselDiv1 = styled.div`
   height: 500px;
@@ -77,8 +78,13 @@ const Landing = () => {
   const [trips, setTrips] = useState([]);
   const [tripHarga, setTripHarga] = useState([]);
   const [tripReq, setTripReq] = useState([]);
+  const [loadTrip, setLoadTrip] = useState(true);
+  const [loadTrips, setLoadTrips] = useState(true);
+  const [loadHarga, setLoadHarga] = useState(true);
+  const [loadReq, setLoadReq] = useState(true);
 
   const handleAPI = async () => {
+    setLoadTrip(true);
     try {
       const response = await axios
         .get(
@@ -88,24 +94,28 @@ const Landing = () => {
           setTrip(res.data.data);
           console.log("sukses");
         });
+      setLoadTrip(false);
     } catch (error) {
       console.log(error.message);
     }
   };
 
   const handle500 = async () => {
+    setLoadTrips(true);
     try {
       const response = await sintaAPI
         .get("/trip/get/kategori?kategori=internasional")
         .then((res) => {
           setTrips(res.data.data);
         });
+      setLoadTrips(false);
     } catch (error) {
       console.log(error.message);
     }
   };
 
   const handleHarga = async () => {
+    setLoadHarga(true);
     try {
       const response = await sintaAPI
         .get("/trip/get/price?maxPrice=500000")
@@ -113,12 +123,14 @@ const Landing = () => {
           setTripHarga(res.data.data);
           console.log("sukses");
         });
+      setLoadHarga(false);
     } catch (error) {
       console.log(error.message);
     }
   };
 
   const handleReq = async () => {
+    setLoadReq(true);
     try {
       const response = await sintaAPI
         .get("/trip/get/requirement?requirement=false")
@@ -126,6 +138,7 @@ const Landing = () => {
           setTripHarga(res.data.data);
           console.log("sukses");
         });
+      setLoadReq(false);
     } catch (error) {
       console.log(error.message);
     }
@@ -135,6 +148,7 @@ const Landing = () => {
     handleAPI();
     handle500();
     handleReq();
+    handleHarga();
   }, []);
 
   return (
@@ -153,6 +167,7 @@ const Landing = () => {
             <Title>Ayo liburan ke destinasi menarik di dalam negeri!</Title>
             <NavLink to="/tripDalamNegeri">Lihat Selengkapnya</NavLink>
           </div>
+          {loadTrip && <Loading />}
           <Row>
             {trip.slice(0, 4).map((trip) => {
               const { id, deskripsi, kota, provinsi, harga } = trip;
@@ -163,6 +178,7 @@ const Landing = () => {
                     kota={kota}
                     provinsi={provinsi}
                     harga={harga["1-3 orang"]}
+                    foto={deskripsi.cover}
                   />
                 </Col>
               );
@@ -180,6 +196,7 @@ const Landing = () => {
             <Title>Ayo liburan ke destinasi menarik di luar negeri!</Title>
             <NavLink to="/tripLuarNegeri">Lihat Selengkapnya</NavLink>
           </div>
+          {loadTrips && <Loading />}
           <Row>
             {trips.slice(0, 4).map((trips) => {
               const { id, deskripsi, kota, provinsi, harga } = trips;
@@ -191,6 +208,7 @@ const Landing = () => {
                     kota={kota}
                     provinsi={provinsi}
                     harga={harga["1-3 orang"]}
+                    foto={deskripsi.cover}
                   />
                 </Col>
               );
@@ -200,16 +218,18 @@ const Landing = () => {
         {/* -------------------batas------------------------*/}
         <Section>
           <Title>Under 500k udah bisa jalan-jalan, lho!</Title>
+          {loadHarga && <Loading />}
           <Row>
             {tripHarga.slice(0, 4).map((tripHarga) => {
               const { id, deskripsi, kota, provinsi, harga } = tripHarga;
               return (
-                <Col span={6} key={id} {...trips}>
+                <Col span={6} key={id} {...tripHarga}>
                   <Card
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
                     harga={harga["1-3 orang"]}
+                    foto={deskripsi.cover}
                   />
                 </Col>
               );
@@ -229,6 +249,7 @@ const Landing = () => {
                     kota={kota}
                     provinsi={provinsi}
                     harga={harga["1-3 orang"]}
+                    foto={deskripsi.cover}
                   />
                 </Col>
               );

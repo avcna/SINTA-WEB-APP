@@ -7,6 +7,7 @@ import { useState } from "react";
 import { sintaAPI } from "../config/Api";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
+import { Loading } from "../components/Loader";
 
 const { Sider, Content } = Layout;
 
@@ -19,7 +20,9 @@ const TLN = () => {
     };
   }, []);
   const [trip, setTrip] = useState([]);
+  const [load, setLoad] = useState(true);
   const fetchTDN = async () => {
+    setLoad(true);
     try {
       const response = await sintaAPI
         .get("/trip/get/kategori?kategori=internasional")
@@ -27,6 +30,7 @@ const TLN = () => {
           setTrip(res.data.data);
         });
       console.log("sukses");
+      setLoad(false);
     } catch (error) {
       console.log(error);
     }
@@ -47,6 +51,7 @@ const TLN = () => {
         </Sider>
         <Content style={{ background: "#FFFFFF" }}>
           <Title>Trip Luar Negeri</Title>
+          {load && <Loading />}
           <Row gutter={[48, 64]}>
             {trip.map((trip) => {
               const { id, deskripsi, kota, provinsi, harga } = trip;
@@ -58,6 +63,7 @@ const TLN = () => {
                     kota={kota}
                     provinsi={provinsi}
                     harga={harga["1-3 orang"]}
+                    foto={deskripsi.cover}
                   />
                 </Col>
               );
