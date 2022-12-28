@@ -181,10 +181,7 @@ const ProfilSaya = () => {
                   Akun Twitter<RequiredSign>*</RequiredSign>
                 </TitleInput>
                 <InputWrapper>
-                  <Input
-                    placeholder="Masukkan akun email anda disini"
-                    required
-                  />
+                  <Input placeholder="@nama" required />
                 </InputWrapper>
               </Col>
               <Col span={12}>

@@ -15,6 +15,7 @@ import { useParams } from "react-router-dom";
 import { sintaAPI } from "../config/Api";
 import { useEffect } from "react";
 import Card from "../components/Card";
+import { ProfilArea } from "../components/ProfilArea";
 
 const { Sider, Content } = Layout;
 
@@ -149,7 +150,7 @@ const Detail = () => {
           <ContactUs wa={detail.wa} />
         </Content>
         <Sider style={{ background: "none" }} width={462}>
-          tessss
+          <ProfilArea />
         </Sider>
       </Layout>
     </>

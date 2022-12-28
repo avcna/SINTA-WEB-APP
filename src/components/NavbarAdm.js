@@ -34,7 +34,9 @@ const NavbarAdm = () => {
             width: "50%",
           }}
         >
-          <img src={logo} width="120px" />
+          <Link to="/">
+            <img src={logo} width="120px" />
+          </Link>
         </span>
 
         <NavLink to="/beranda">Beranda</NavLink>
