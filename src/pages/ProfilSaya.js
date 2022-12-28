@@ -4,6 +4,7 @@ import { Dashboard, Info, Wrapper } from "../components/AgentComponents";
 import { useEffect } from "react";
 import { Input, InputWrapper, RequiredSign, TitleInput } from "./Register";
 import styled from "styled-components";
+import fileBtn from "../assets/svg/addFile.svg";
 
 const { Content } = Layout;
 
@@ -82,9 +83,24 @@ const ProfilSaya = () => {
                   Surat Izin Usaha<RequiredSign>*</RequiredSign>
                 </TitleInput>
                 <InputWrapper>
+                  <label
+                    style={{
+                      border: "1px solid #abbed1",
+                      borderRadius: "6px",
+                      padding: " 12px 16px",
+                      width: "100%",
+                    }}
+                    for="file-upload"
+                    placeholder="Surat Usaha.pdf"
+                  >
+                    <img src={fileBtn} />
+                  </label>
                   <Input
+                    id="file-upload"
                     placeholder="Masukkan akun email anda disini"
                     required
+                    type="file"
+                    style={{ display: "none" }}
                   />
                 </InputWrapper>
               </Col>
@@ -104,54 +120,86 @@ const ProfilSaya = () => {
               />
             </InputWrapper>
             <Dashboard>Kontak Yang Dapat Dihubungi Wisatawan</Dashboard>
-            <TitleInput>
-              Nomor Telepon<RequiredSign>*</RequiredSign>
-            </TitleInput>
-            <InputWrapper>
-              <Input placeholder="Masukkan akun email anda disini" required />
-            </InputWrapper>
-            <TitleInput>
-              Nomor Telepon<RequiredSign>*</RequiredSign>
-            </TitleInput>
-            <InputWrapper>
-              <Input placeholder="Masukkan akun email anda disini" required />
-            </InputWrapper>
-            <TitleInput>
-              Akun Telegram<RequiredSign>*</RequiredSign>
-            </TitleInput>
-            <InputWrapper>
-              <Input placeholder="Masukkan akun email anda disini" required />
-            </InputWrapper>
-            <TitleInput>
-              Kontak WhatsApp<RequiredSign>*</RequiredSign>
-            </TitleInput>
-            <InputWrapper>
-              <Input placeholder="Masukkan akun email anda disini" required />
-            </InputWrapper>
-            <TitleInput>
-              Akun Line<RequiredSign>*</RequiredSign>
-            </TitleInput>
-            <InputWrapper>
-              <Input placeholder="Masukkan akun email anda disini" required />
-            </InputWrapper>
-            <TitleInput>
-              Akun Instagram<RequiredSign>*</RequiredSign>
-            </TitleInput>
-            <InputWrapper>
-              <Input placeholder="Masukkan akun email anda disini" required />
-            </InputWrapper>
-            <TitleInput>
-              Akun Twitter<RequiredSign>*</RequiredSign>
-            </TitleInput>
-            <InputWrapper>
-              <Input placeholder="Masukkan akun email anda disini" required />
-            </InputWrapper>
-            <TitleInput>
-              Akun Facebook<RequiredSign>*</RequiredSign>
-            </TitleInput>
-            <InputWrapper>
-              <Input placeholder="Masukkan akun email anda disini" required />
-            </InputWrapper>
+            <Row gutter={[48, 28]}>
+              <Col span={12}>
+                <TitleInput>
+                  Nomor Telepon<RequiredSign>*</RequiredSign>
+                </TitleInput>
+                <InputWrapper>
+                  <Input
+                    placeholder="Masukkan akun email anda disini"
+                    required
+                  />
+                </InputWrapper>
+              </Col>
+              <Col span={12}>
+                <TitleInput>
+                  Akun Telegram<RequiredSign>*</RequiredSign>
+                </TitleInput>
+                <InputWrapper>
+                  <Input
+                    placeholder="Masukkan akun email anda disini"
+                    required
+                  />
+                </InputWrapper>
+              </Col>
+              <Col span={12}>
+                <TitleInput>
+                  Kontak WhatsApp<RequiredSign>*</RequiredSign>
+                </TitleInput>
+                <InputWrapper>
+                  <Input
+                    placeholder="Masukkan akun email anda disini"
+                    required
+                  />
+                </InputWrapper>
+              </Col>
+              <Col span={12}>
+                <TitleInput>
+                  Akun Line<RequiredSign>*</RequiredSign>
+                </TitleInput>
+                <InputWrapper>
+                  <Input
+                    placeholder="Masukkan akun email anda disini"
+                    required
+                  />
+                </InputWrapper>
+              </Col>
+              <Col span={12}>
+                <TitleInput>
+                  Akun Instagram<RequiredSign>*</RequiredSign>
+                </TitleInput>
+                <InputWrapper>
+                  <Input
+                    placeholder="Masukkan akun email anda disini"
+                    required
+                  />
+                </InputWrapper>
+              </Col>
+              <Col span={12}>
+                <TitleInput>
+                  Akun Twitter<RequiredSign>*</RequiredSign>
+                </TitleInput>
+                <InputWrapper>
+                  <Input
+                    placeholder="Masukkan akun email anda disini"
+                    required
+                  />
+                </InputWrapper>
+              </Col>
+              <Col span={12}>
+                <TitleInput>
+                  Akun Facebook<RequiredSign>*</RequiredSign>
+                </TitleInput>
+                <InputWrapper>
+                  <Input
+                    placeholder="Masukkan akun email anda disini"
+                    required
+                  />
+                </InputWrapper>
+              </Col>
+            </Row>
+
             <Dashboard>Tentang Perusahaan Anda</Dashboard>
             <TitleInput>
               Tentang Saya<RequiredSign>*</RequiredSign>

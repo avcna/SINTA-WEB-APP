@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Portofolio from "./pages/Portofolio";
 import AkunSaya from "./pages/AkunSaya";
 import ProfilSaya from "./pages/ProfilSaya";
+import PaketWisata from "./pages/PaketWisata";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/portofolio" element={<Portofolio />} />
           <Route path="/akunSaya" element={<AkunSaya />} />
           <Route path="/profilSaya" element={<ProfilSaya />} />
+          <Route path="/paketWisata" element={<PaketWisata />} />
         </Routes>
       </BrowserRouter>
     </>
