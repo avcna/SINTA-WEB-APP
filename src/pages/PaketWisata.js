@@ -1,10 +1,12 @@
-import { Layout } from "antd";
+import { Col, Layout, Row } from "antd";
 import NavbarAdm from "../components/NavbarAdm";
 import { useEffect } from "react";
 import { Dashboard, Info } from "../components/AgentComponents";
 import styled from "styled-components";
+import Card from "../components/Card";
+import FilterHarga from "../components/FilterHarga";
 
-const { Content } = Layout;
+const { Sider, Content } = Layout;
 
 const Button = styled.button`
   background: #0053ad;
@@ -18,6 +20,10 @@ const Button = styled.button`
   line-height: 14px;
   color: #ffffff;
   border: none;
+`;
+
+const Wrapper = styled.div`
+  padding: 32px 64px;
 `;
 const PaketWisata = () => {
   useEffect(() => {
@@ -40,6 +46,29 @@ const PaketWisata = () => {
             Sekarang” dibawah ini
           </Info>
           <Button>Publish Sekarang</Button>
+
+          {/* ------------------------------------batas------------------------------------ */}
+
+          <Layout style={{ background: "none", marginTop: "48px" }}>
+            <Sider
+              width={257}
+              style={{ background: "none", marginRight: "64px" }}
+            >
+              <Dashboard>Filter Paket Wisata</Dashboard>
+              <FilterHarga />
+            </Sider>
+            <Content>
+              <Dashboard>Semua Paket Wisata</Dashboard>
+              <Row>
+                <Col span={12}>
+                  <Card />
+                </Col>
+                <Col span={12}>
+                  <Card />
+                </Col>
+              </Row>
+            </Content>
+          </Layout>
         </Content>
       </Layout>
     </>

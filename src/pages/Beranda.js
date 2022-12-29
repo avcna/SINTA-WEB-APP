@@ -1,7 +1,8 @@
 import NavbarAdm from "../components/NavbarAdm";
-import { Layout } from "antd";
+import { Col, Layout, Row } from "antd";
 import { Dashboard, Info, Wrapper } from "../components/AgentComponents";
 import { useEffect } from "react";
+import Card from "../components/Card";
 
 const { Sider, Content } = Layout;
 
@@ -31,6 +32,24 @@ const Beranda = () => {
           <Wrapper>
             <Dashboard>Dashboard Agen</Dashboard>
             <Info>Halo, Selamat datang di task management dashboard agen</Info>
+
+            <Dashboard>Paket Wisata</Dashboard>
+            <Row>
+              <Col span={6}>
+                <Card />
+              </Col>
+              <Col span={6}>
+                <Card />
+              </Col>
+              <Col span={6}>
+                <Card />
+              </Col>
+              <Col span={6}>
+                <Card />
+              </Col>
+            </Row>
+
+            <Dashboard>Portofolio</Dashboard>
           </Wrapper>
         </Content>
       </Layout>

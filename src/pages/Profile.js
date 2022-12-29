@@ -9,6 +9,7 @@ import {
   TentangKami,
 } from "../components/ProfileComponents";
 import Footer from "../components/Footer";
+import { useEffect } from "react";
 
 const ProfilePict = styled.div`
   width: 150px;
@@ -34,17 +35,25 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: stretch;
   border-bottom: 2px solid #abbed1;
+  position: relative;
 `;
 
 const NavLink = styled(Link)`
   padding: 24px auto;
   width: 220px;
   background-color: #82b6ff;
-  flex-grow: none;
-  bottom: 0px;
+  // position: absolute;
+  // bottom: 0px;
 `;
 
 const Profile = () => {
+  useEffect(() => {
+    const initialValue = document.body.style.zoom;
+    document.body.style.zoom = "90%";
+    return () => {
+      document.body.style.zoom = initialValue;
+    };
+  }, []);
   return (
     <>
       <Navbar />

@@ -28,7 +28,7 @@ const NavbarAdm = () => {
     <>
       <Sider
         style={{
-          background: "#F5F7FA",
+          background: "none",
           height: "100%",
         }}
       >
