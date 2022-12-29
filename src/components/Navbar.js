@@ -18,6 +18,10 @@ const NavLink = styled(Link)`
   margin-right: 48px;
   text-decoration: none;
   color: black;
+
+  &.active {
+    color: #0053ad;
+  }
 `;
 
 const Navbrand = styled(Link)`

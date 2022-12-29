@@ -5,6 +5,7 @@ import ovo from "../assets/footer/image 57.svg";
 import gopay from "../assets/footer/image 58.svg";
 import spay from "../assets/footer/image 54.svg";
 import dana from "../assets/footer/image 55.svg";
+import { NavLink } from "react-router-dom";
 
 const Section = styled.section`
   min-height: 350px;
@@ -71,7 +72,9 @@ const Footer = () => {
           </Row>
           <Row>
             <Col span={6}>
-              <Menu>Tentang Kami</Menu>
+              <NavLink to="/tentangKami">
+                <Menu>Tentang Kami</Menu>
+              </NavLink>
             </Col>
             <Col span={6}>
               <Helper></Helper>
@@ -90,7 +93,9 @@ const Footer = () => {
           </Row>
           <Row>
             <Col span={6}>
-              <Menu>Bergabung Menjadi Agen</Menu>
+              <NavLink to="/bergabungMenjadiAgen">
+                <Menu>Bergabung Menjadi Agen</Menu>
+              </NavLink>
             </Col>
             <Col span={6}>
               <Helper></Helper>
@@ -107,7 +112,9 @@ const Footer = () => {
           </Row>
           <Row>
             <Col span={6}>
-              <Menu>Bergabung Menjadi Agen</Menu>
+              <NavLink to="/faq">
+                <Menu>FAQ</Menu>
+              </NavLink>
             </Col>
             <Col span={6}>
               <Helper></Helper>
