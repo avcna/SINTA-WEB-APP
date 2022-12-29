@@ -64,6 +64,7 @@ const Detail = () => {
   let { idTrip } = useParams();
   const [value, setValue] = useState("deskripsi");
   const [detail, setDetail] = useState({
+    idAgent: 0,
     deskripsi: "",
     informasiPenting: "",
     rundown: "",
@@ -72,12 +73,14 @@ const Detail = () => {
     harga: "",
     wa: "",
   });
+  const [load, setLoad] = useState(true);
 
   const handleNav = (val) => {
     setValue(val);
   };
 
   const fetchData = async () => {
+    setLoad(true);
     try {
       const response = await sintaAPI.get(`/agent/getbytrip/${idTrip}`, {
         params: {},
@@ -93,6 +96,7 @@ const Detail = () => {
           response.data.data.trip[0].fasilitasTidakTermasuk,
         wa: response.data.data.whatsappKantor,
       });
+      setLoad(false);
     } catch (error) {
       console.log(error);
     }
@@ -153,11 +157,11 @@ const Detail = () => {
                 Harga
               </NavLink>
             </Nav>
-            <Title>Paket Wisata Pantai Malang Selatan Full Trip</Title>
+            <Title>{detail.deskripsi}</Title>
           </Section>
+          {load && <Loading />}
           {value == "deskripsi" ? (
             <>
-              <Loading />
               <Deskripsi deskripsi={detail.deskripsi} />
             </>
           ) : null}

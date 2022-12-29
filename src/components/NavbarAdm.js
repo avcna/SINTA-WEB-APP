@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 import logo from "../assets/user/logo.svg";
 import { Layout } from "antd";
+import { useAuth } from "../config/Auth";
 
 const { Sider } = Layout;
 
@@ -18,6 +19,11 @@ const NavLink = styled(Link)`
 `;
 
 const NavbarAdm = () => {
+  const { setAndGetTokens } = useAuth();
+  const handleLogout = () => {
+    setAndGetTokens();
+    localStorage.clear();
+  };
   return (
     <>
       <Sider
@@ -45,7 +51,7 @@ const NavbarAdm = () => {
         <NavLink to="/profilSaya">Profil Saya</NavLink>
         <NavLink to="/akunSaya">Akun Saya</NavLink>
         <NavLink to="/premium">Premium</NavLink>
-        <NavLink to="/keluar">Keluar</NavLink>
+        <NavLink onClick={handleLogout}>Keluar</NavLink>
       </Sider>
     </>
   );

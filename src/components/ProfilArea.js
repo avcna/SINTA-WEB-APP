@@ -50,7 +50,7 @@ const Foto = styled.div`
   bottom: 0px;
 `;
 
-export const ProfilArea = ({ nama, kontak }) => {
+export const ProfilArea = ({ id, nama, kontak }) => {
   return (
     <>
       <Div>

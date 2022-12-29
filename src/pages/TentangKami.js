@@ -23,6 +23,7 @@ export const Margin = styled.body`
 export const Section = styled.section`
   dispaly: flex;
   justify-content: space-between;
+  margin-bottom: 142px;
 `;
 
 const WhyText = styled.p`
@@ -74,9 +75,9 @@ const TentangKami = () => {
         </Section>
         <Section>
           <Title>Layanan Kami</Title>
-          <Row>
-            <Col flex={408}>
-              <img src={fotoAtas} />
+          <Row style={{ marginBottom: "64px" }}>
+            <Col flex={355}>
+              <img width="315px" src={fotoAtas} />
             </Col>
             <Col flex="auto">
               <Desc style={{ maxWidth: "813px" }}>
@@ -89,8 +90,8 @@ const TentangKami = () => {
             </Col>
           </Row>
           <Row>
-            <Col flex={408}>
-              <img src={fotoBawah} />
+            <Col flex={355}>
+              <img width="315px" src={fotoBawah} />
             </Col>
             <Col flex="auto">
               <Desc style={{ maxWidth: "813px" }}>
