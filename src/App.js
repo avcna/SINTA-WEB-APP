@@ -77,10 +77,38 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/portofolio" element={<Portofolio />} />
-            <Route path="/akunSaya" element={<AkunSaya />} />
-            <Route path="/profilSaya" element={<ProfilSaya />} />
-            <Route path="/paketWisata" element={<PaketWisata />} />
+            <Route
+              path="/portofolio"
+              element={
+                <PrivateRoute>
+                  <Portofolio />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/akunSaya"
+              element={
+                <PrivateRoute>
+                  <AkunSaya />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/profilSaya"
+              element={
+                <PrivateRoute>
+                  <ProfilSaya />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/paketWisata"
+              element={
+                <PrivateRoute>
+                  <PaketWisata />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>

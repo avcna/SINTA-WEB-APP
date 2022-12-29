@@ -8,6 +8,7 @@ import { sintaAPI } from "../config/Api";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import { Loading } from "../components/Loader";
+import FilterHarga from "../components/FilterHarga";
 
 const { Sider, Content } = Layout;
 
@@ -48,6 +49,7 @@ const TLN = () => {
           width={254}
         >
           <Title>Filter Paket Wisata</Title>
+          <FilterHarga />
         </Sider>
         <Content style={{ background: "#FFFFFF" }}>
           <Title>Trip Luar Negeri</Title>

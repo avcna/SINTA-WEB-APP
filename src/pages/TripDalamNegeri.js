@@ -8,6 +8,7 @@ import { sintaAPI } from "../config/Api";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import { Loading } from "../components/Loader";
+import FilterHarga from "../components/FilterHarga";
 
 const { Sider, Content } = Layout;
 
@@ -39,6 +40,7 @@ const TDN = () => {
   useEffect(() => {
     fetchTDN();
   }, []);
+
   return (
     <>
       <Navbar />
@@ -49,13 +51,7 @@ const TDN = () => {
           width={254}
         >
           <Title>Filter Paket Wisata</Title>
-          <input
-            type="range"
-            min="0"
-            max="1050"
-            // value="0"
-            step="30"
-          />
+          <FilterHarga />
         </Sider>
         <Content style={{ background: "white" }}>
           <Title>Trip Dalam Negeri</Title>
