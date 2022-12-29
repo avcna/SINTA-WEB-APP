@@ -7,6 +7,7 @@ import { sintaAPI } from "../config/Api";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
+import { useAuth } from "../config/Auth";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -79,6 +80,7 @@ const Register = () => {
       document.body.style.zoom = initialValue;
     };
   }, []);
+  const { setAndGetTokens } = useAuth();
   const navigate = useNavigate();
   const [forms, setForms] = useState({
     email: "",
@@ -109,10 +111,12 @@ const Register = () => {
 
           if (loginresponse.data.success) {
             console.log("sukses login");
-            const id = registerResponse.data.data.id;
+            const token = loginresponse.data.data.jwt;
+            const id = loginresponse.data.data.agent.id;
             window.ID = id;
 
             const currentUser = await sintaAPI.get(`/agent/get/${id}`);
+            setAndGetTokens(token, id);
             navigate("/beranda", { replace: true });
           }
         } catch (error) {

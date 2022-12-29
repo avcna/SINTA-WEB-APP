@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import { sintaAPI } from "../config/Api";
+import { useAuth } from "../config/Auth";
 import { useNavigate } from "react-router-dom";
 
 const FormWrapper = styled.form`
@@ -80,6 +81,8 @@ const Login = () => {
     };
   }, []);
 
+  const { setAndGetTokens } = useAuth();
+
   const [formsL, setFormsL] = useState({
     email: "",
     password: "",
@@ -97,10 +100,12 @@ const Login = () => {
 
       if (loginresponse.data.success) {
         console.log("sukses login");
+        const token = loginresponse.data.data.jwt;
         const id = loginresponse.data.data.agent.id;
         window.ID = id;
 
         const currentUser = await sintaAPI.get(`/agent/get/${id}`);
+        setAndGetTokens(token, id);
         navigate("/beranda", { replace: true });
       }
     } catch (error) {

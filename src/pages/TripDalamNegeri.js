@@ -49,6 +49,13 @@ const TDN = () => {
           width={254}
         >
           <Title>Filter Paket Wisata</Title>
+          <input
+            type="range"
+            min="0"
+            max="1050"
+            // value="0"
+            step="30"
+          />
         </Sider>
         <Content style={{ background: "white" }}>
           <Title>Trip Dalam Negeri</Title>

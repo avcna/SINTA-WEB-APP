@@ -15,35 +15,75 @@ import Portofolio from "./pages/Portofolio";
 import AkunSaya from "./pages/AkunSaya";
 import ProfilSaya from "./pages/ProfilSaya";
 import PaketWisata from "./pages/PaketWisata";
+import { AuthContext } from "./config/Auth";
+import { PrivateRoute, RestrictedRoute } from "./config/PrivateRoute";
+import { useState } from "react";
 
 function App() {
+  const isAnyToken = JSON.parse(localStorage.getItem("token"));
+  const userId = JSON.parse(localStorage.getItem("id"));
+  const [authToken, setAuthToken] = useState(isAnyToken);
+  const [user, setUser] = useState(userId);
+
+  const setAndGetTokens = (token, id) => {
+    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("id", JSON.stringify(id));
+    setAuthToken(token);
+    setUser(id);
+  };
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/tripDalamNegeri" element={<TDN />} />
-          <Route path="/tripDalamNegeri/detail/:idTrip" element={<Detail />} />
-          <Route path="/tripLuarNegeri" element={<TLN />} />
-          <Route path="/tripLuarNegeri/detail/:idTrip" element={<Detail />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/tentangKami" element={<TentangKami />} />
-          <Route
-            path="/bergabungMenjadiAgen"
-            element={<BergabungMenjadiAgent />}
-          />
-          <Route path="/detail/:idTrip" element={<Detail />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/beranda" element={<Beranda />} />
-          <Route path="/portofolio" element={<Portofolio />} />
-          <Route path="/akunSaya" element={<AkunSaya />} />
-          <Route path="/profilSaya" element={<ProfilSaya />} />
-          <Route path="/paketWisata" element={<PaketWisata />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthContext.Provider value={{ authToken, setAndGetTokens, user }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/tripDalamNegeri" element={<TDN />} />
+            <Route
+              path="/tripDalamNegeri/detail/:idTrip"
+              element={<Detail />}
+            />
+            <Route path="/tripLuarNegeri" element={<TLN />} />
+            <Route path="/tripLuarNegeri/detail/:idTrip" element={<Detail />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/tentangKami" element={<TentangKami />} />
+            <Route
+              path="/bergabungMenjadiAgen"
+              element={<BergabungMenjadiAgent />}
+            />
+            <Route path="/detail/:idTrip" element={<Detail />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute>
+                  <Register />
+                </RestrictedRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute>
+                  <Login />
+                </RestrictedRoute>
+              }
+            />
+            <Route
+              path="/beranda"
+              element={
+                <PrivateRoute>
+                  <Beranda />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/portofolio" element={<Portofolio />} />
+            <Route path="/akunSaya" element={<AkunSaya />} />
+            <Route path="/profilSaya" element={<ProfilSaya />} />
+            <Route path="/paketWisata" element={<PaketWisata />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthContext.Provider>
     </>
   );
 }
