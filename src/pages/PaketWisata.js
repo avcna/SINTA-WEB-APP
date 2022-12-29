@@ -1,7 +1,12 @@
 import { Col, Layout, Row } from "antd";
 import NavbarAdm from "../components/NavbarAdm";
 import { useEffect } from "react";
-import { Dashboard, Info } from "../components/AgentComponents";
+import {
+  Dashboard,
+  EmptyPaketwisata,
+  EmptyPortofolio,
+  Info,
+} from "../components/AgentComponents";
 import styled from "styled-components";
 import Card from "../components/Card";
 import FilterHarga from "../components/FilterHarga";
@@ -41,6 +46,7 @@ const PaketWisata = () => {
           <Dashboard>Dashboard Agen</Dashboard>
           <Info>Halo, Selamat datang di task management dashboard agen</Info>
           <Dashboard>Tambah Paket Wisata</Dashboard>
+          {/* <EmptyPortofolio /> */}
           <Info>
             Jika anda ingin menambah paket wisata, silahkan klik tombol “Publish
             Sekarang” dibawah ini
