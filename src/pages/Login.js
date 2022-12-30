@@ -8,6 +8,8 @@ import { useState } from "react";
 import { sintaAPI } from "../config/Api";
 import { useAuth } from "../config/Auth";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../components/Loader";
+import { LoadingText } from "../components/loaderText";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -59,7 +61,7 @@ const InputWrapper = styled.div`
 `;
 
 const SubmitBtn = styled.button`
-  padding: 16px 69px;
+  padding: 16px;
   gap: 10px;
   background: #0053ad;
   border-radius: 8px;
@@ -70,6 +72,7 @@ const SubmitBtn = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 14px;
+  width: 170px;
 `;
 
 const Login = () => {
@@ -87,11 +90,13 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [load, setLoad] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoad(true);
     try {
       const loginresponse = await sintaAPI.post("/agent/login", {
         ...formsL,
@@ -108,6 +113,7 @@ const Login = () => {
         setAndGetTokens(token, id);
         navigate("/beranda", { replace: true });
       }
+      setLoad(false);
     } catch (error) {
       console.log(error);
     }
@@ -155,7 +161,9 @@ const Login = () => {
             <Text>
               Belum punya akun? <NavLink to="/register">Register</NavLink>
             </Text>
-            <SubmitBtn type="submit">Login</SubmitBtn>
+            <SubmitBtn type="submit">
+              {load ? <LoadingText /> : "Login"}
+            </SubmitBtn>
           </div>
         </FormWrapper>
       </Section>

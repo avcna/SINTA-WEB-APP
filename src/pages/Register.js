@@ -8,6 +8,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuth } from "../config/Auth";
+import { LoadingText } from "../components/loaderText";
 
 const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
@@ -92,9 +93,11 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [load, setLoad] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoad(true);
     try {
       const registerResponse = await sintaAPI.post("/agent/create", {
         ...forms,
@@ -123,6 +126,7 @@ const Register = () => {
           console.log(error);
         }
       }
+      setLoad(false);
     } catch (error) {
       console.log(error);
     }
@@ -211,7 +215,9 @@ const Register = () => {
             <Text>
               Sudah punya akun?<NavLink to="/login">Login</NavLink>
             </Text>
-            <SubmitBtn type="submit">Sign Up</SubmitBtn>
+            <SubmitBtn type="submit">
+              {load ? <LoadingText /> : "Sign Up"}
+            </SubmitBtn>
           </div>
         </FormWrapper>
       </Section>
