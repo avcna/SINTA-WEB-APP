@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { sintaAPI } from "../config/Api";
 
 const Title = styled.p`
   font-family: Inter;
@@ -33,8 +34,30 @@ const Button = styled.button`
   line-height: 14px;
 `;
 
-const FilterHarga = () => {
+const FilterHarga = ({ passData, kategori }) => {
   const [price, setPrice] = useState(0);
+
+  const fetchData = async () => {
+    // setLoad(true);
+    let angka = price;
+    console.log(angka);
+    try {
+      const response = await sintaAPI
+        .get(
+          `/trip/get/maxpricekategori?maxprice=${angka}&kategori=${kategori}`
+        )
+        .then((res) => {
+          passData(res.data.data);
+          console.log("sukses filter");
+        });
+
+      // setLoad(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {}, []);
   return (
     <>
       <Title>Rentang Harga</Title>
@@ -48,13 +71,14 @@ const FilterHarga = () => {
         <input
           type="range"
           min="0"
-          max="50000000"
+          max="100000000"
           // value="0"
           step="5000000"
           style={{ width: "100%" }}
           onChange={(e) => {
             setPrice(e.target.value);
             console.log(price);
+            // passData(data);
           }}
         />
       </div>
@@ -65,7 +89,7 @@ const FilterHarga = () => {
           marginTop: "36px",
         }}
       >
-        <Button>Apply</Button>
+        <Button onClick={fetchData}>Apply</Button>
         <Button
           style={{
             background: "white",

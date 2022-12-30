@@ -65,6 +65,7 @@ const Detail = () => {
   const [value, setValue] = useState("deskripsi");
   const [detail, setDetail] = useState({
     idAgent: 0,
+    nama: "",
     deskripsi: "",
     informasiPenting: "",
     rundown: "",
@@ -88,6 +89,7 @@ const Detail = () => {
 
       console.log("sukses");
       setDetail({
+        nama: response.data.data.namaBadanUsaha,
         deskripsi: response.data.data.trip[0].deskripsi.judul,
         informasiPenting: response.data.data.trip[0].informasiPenting,
         rundown: response.data.data.trip[0].linkRundown,
@@ -179,7 +181,7 @@ const Detail = () => {
           <ContactUs wa={detail.wa} />
         </Content>
         <Sider style={{ background: "none" }} width={462}>
-          <ProfilArea />
+          <ProfilArea nama={detail.nama} />
         </Sider>
       </Layout>
     </>

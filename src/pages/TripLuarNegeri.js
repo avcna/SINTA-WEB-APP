@@ -39,6 +39,11 @@ const TLN = () => {
   useEffect(() => {
     fetchTDN();
   }, []);
+
+  const passData = (trip) => {
+    setTrip(trip);
+    console.log(trip);
+  };
   return (
     <>
       <Navbar />
@@ -49,7 +54,7 @@ const TLN = () => {
           width={254}
         >
           <Title>Filter Paket Wisata</Title>
-          <FilterHarga />
+          <FilterHarga passData={passData} kategori="internasional" />
         </Sider>
         <Content style={{ background: "#FFFFFF" }}>
           <Title>Trip Luar Negeri</Title>

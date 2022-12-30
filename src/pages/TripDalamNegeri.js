@@ -5,7 +5,7 @@ import { Title } from "./Home";
 import Card from "../components/Card";
 import { useState } from "react";
 import { sintaAPI } from "../config/Api";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import Footer from "../components/Footer";
 import { Loading } from "../components/Loader";
 import FilterHarga from "../components/FilterHarga";
@@ -29,9 +29,9 @@ const TDN = () => {
         .get("/trip/get/kategori?kategori=lokal")
         .then((res) => {
           setTrip(res.data.data);
-          console.log("sukses");
+          console.log("sukses lokal");
         });
-      console.log("sukses");
+
       setLoad(false);
     } catch (error) {
       console.log(error);
@@ -40,6 +40,12 @@ const TDN = () => {
   useEffect(() => {
     fetchTDN();
   }, []);
+
+  // const [message, setMessage] = useState([]);
+  const passData = (trip) => {
+    setTrip(trip);
+    console.log(trip);
+  };
 
   return (
     <>
@@ -51,7 +57,7 @@ const TDN = () => {
           width={254}
         >
           <Title>Filter Paket Wisata</Title>
-          <FilterHarga />
+          <FilterHarga passData={passData} kategori="lokal" />
         </Sider>
         <Content style={{ background: "white" }}>
           <Title>Trip Dalam Negeri</Title>

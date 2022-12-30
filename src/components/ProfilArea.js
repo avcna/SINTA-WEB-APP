@@ -8,6 +8,7 @@ import ig from "../assets/profilArea/insta.svg";
 import line from "../assets/profilArea/line.svg";
 import fb from "../assets/profilArea/fb.svg";
 import twt from "../assets/profilArea/twitter.svg";
+import { NavLink } from "react-router-dom";
 
 const Div = styled.div`
   padding: 30px 28px;
@@ -24,6 +25,7 @@ const Nama = styled.h1`
   line-height: 28px;
   color: #212121;
   display: block;
+  max-width: 164px;
 `;
 
 const ProfileBtn = styled.button`
@@ -50,7 +52,7 @@ const Foto = styled.div`
   bottom: 0px;
 `;
 
-export const ProfilArea = ({ id, nama, kontak }) => {
+export const ProfilArea = ({ id, nama }) => {
   return (
     <>
       <Div>
@@ -65,8 +67,10 @@ export const ProfilArea = ({ id, nama, kontak }) => {
             <Foto />
           </Col>
           <Col flex="auto">
-            <Nama>Rahman Travel</Nama>
-            <ProfileBtn>Lihat Profil</ProfileBtn>
+            <Nama>{nama}</Nama>
+            <NavLink to="/profile">
+              <ProfileBtn>Lihat Profil</ProfileBtn>
+            </NavLink>
           </Col>
         </Row>
         <Row justify="space-between" style={{ marginBottom: "24px" }}>
