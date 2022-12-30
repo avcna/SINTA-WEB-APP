@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./pages/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Detail from "./pages/Detail";
 import Profile from "./pages/Profile";
 import TentangKami from "./pages/TentangKami";

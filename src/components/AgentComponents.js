@@ -18,7 +18,7 @@ export const Dashboard = styled(Title)`
 `;
 
 export const Wrapper = styled.section`
-  padding: 40px 20px 40px;
+  padding: 40px;
 `;
 
 export const Info = styled.p`

@@ -6,6 +6,7 @@ import {
   EmptyPaketwisata,
   EmptyPortofolio,
   Info,
+  Wrapper,
 } from "../components/AgentComponents";
 import styled from "styled-components";
 import Card from "../components/Card";
@@ -27,9 +28,9 @@ const Button = styled.button`
   border: none;
 `;
 
-const Wrapper = styled.div`
-  padding: 32px 64px;
-`;
+// const Wrapper = styled.div`
+//   padding: 32px 64px;
+// `;
 const PaketWisata = () => {
   useEffect(() => {
     const initialValue = document.body.style.zoom;
@@ -42,39 +43,41 @@ const PaketWisata = () => {
     <>
       <Layout style={{ background: "none" }}>
         <NavbarAdm />
-        <Content style={{ margin: "24px 40px" }}>
-          <Dashboard>Dashboard Agen</Dashboard>
-          <Info>Halo, Selamat datang di task management dashboard agen</Info>
-          <Dashboard>Tambah Paket Wisata</Dashboard>
-          {/* <EmptyPortofolio /> */}
-          <Info>
-            Jika anda ingin menambah paket wisata, silahkan klik tombol “Publish
-            Sekarang” dibawah ini
-          </Info>
-          <Button>Publish Sekarang</Button>
+        <Content>
+          <Wrapper>
+            <Dashboard>Dashboard Agen</Dashboard>
+            <Info>Halo, Selamat datang di task management dashboard agen</Info>
+            <Dashboard>Tambah Paket Wisata</Dashboard>
+            {/* <EmptyPortofolio /> */}
+            <Info>
+              Jika anda ingin menambah paket wisata, silahkan klik tombol
+              “Publish Sekarang” dibawah ini
+            </Info>
+            <Button>Publish Sekarang</Button>
 
-          {/* ------------------------------------batas------------------------------------ */}
+            {/* ------------------------------------batas------------------------------------ */}
 
-          <Layout style={{ background: "none", marginTop: "48px" }}>
-            <Sider
-              width={257}
-              style={{ background: "none", marginRight: "64px" }}
-            >
-              <Dashboard>Filter Paket Wisata</Dashboard>
-              <FilterHarga />
-            </Sider>
-            <Content>
-              <Dashboard>Semua Paket Wisata</Dashboard>
-              <Row>
-                <Col span={12}>
-                  <Card />
-                </Col>
-                <Col span={12}>
-                  <Card />
-                </Col>
-              </Row>
-            </Content>
-          </Layout>
+            <Layout style={{ background: "none", marginTop: "48px" }}>
+              <Sider
+                width={257}
+                style={{ background: "none", marginRight: "64px" }}
+              >
+                <Dashboard>Filter Paket Wisata</Dashboard>
+                <FilterHarga />
+              </Sider>
+              <Content>
+                <Dashboard>Semua Paket Wisata</Dashboard>
+                <Row>
+                  <Col span={12}>
+                    <Card />
+                  </Col>
+                  <Col span={12}>
+                    <Card />
+                  </Col>
+                </Row>
+              </Content>
+            </Layout>
+          </Wrapper>
         </Content>
       </Layout>
     </>

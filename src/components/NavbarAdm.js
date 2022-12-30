@@ -16,6 +16,15 @@ const NavLink = styled(Link)`
   padding: 16px 38px;
   text-decoration: none;
   display: block;
+
+  &.active {
+    background-color: #0053ad;
+    color: white;
+  }
+
+  &:hover {
+    color: #212121;
+  }
 `;
 
 const NavbarAdm = () => {
@@ -51,7 +60,22 @@ const NavbarAdm = () => {
         <NavLink to="/profilSaya">Profil Saya</NavLink>
         <NavLink to="/akunSaya">Akun Saya</NavLink>
         <NavLink to="/premium">Premium</NavLink>
-        <NavLink onClick={handleLogout}>Keluar</NavLink>
+        <Link
+          style={{
+            color: "#212121",
+            fontFamily: "Inter",
+            fontStyle: "normal",
+            fontWeight: "600",
+            fontSize: "20px",
+            lineHeight: "28px",
+            padding: "16px 38px",
+            textDecoration: "none",
+            display: "block",
+          }}
+          onClick={handleLogout}
+        >
+          Keluar
+        </Link>
       </Sider>
     </>
   );

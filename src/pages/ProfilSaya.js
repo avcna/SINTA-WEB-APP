@@ -33,7 +33,7 @@ const ProfilSaya = () => {
         }}
       >
         <NavbarAdm />
-        <Content style={{ margin: "56px 84px" }}>
+        <Content>
           <Wrapper>
             <Dashboard>Profil Utama Saya</Dashboard>
             <Row gutter={[48, 28]}>

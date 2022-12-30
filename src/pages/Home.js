@@ -135,7 +135,7 @@ const Landing = () => {
       const response = await sintaAPI
         .get("/trip/get/requirement?requirement=false")
         .then((res) => {
-          setTripHarga(res.data.data);
+          setTripReq(res.data.data);
           console.log("sukses");
         });
       setLoadReq(false);
@@ -239,6 +239,7 @@ const Landing = () => {
         {/* -------------------batas------------------------*/}
         <Section>
           <Title>Include semuanya tinggal bawa badan , lho!</Title>
+          {loadReq && <Loading />}
           <Row style={{ display: "flex", justifyContent: "space-between" }}>
             {tripReq.slice(0, 4).map((tripReq) => {
               const { id, deskripsi, kota, provinsi, harga } = tripReq;
