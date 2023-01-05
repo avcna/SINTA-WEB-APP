@@ -22,6 +22,7 @@ const TLN = () => {
   }, []);
   const [trip, setTrip] = useState([]);
   const [load, setLoad] = useState(true);
+  const [isError, setError] = useState(false);
   const fetchTDN = async () => {
     setLoad(true);
     try {
@@ -33,7 +34,8 @@ const TLN = () => {
       console.log("sukses");
       setLoad(false);
     } catch (error) {
-      console.log(error);
+      console.log(error.data.message);
+      setError(true);
     }
   };
   useEffect(() => {

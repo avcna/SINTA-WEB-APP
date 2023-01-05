@@ -10,17 +10,18 @@ import { useEffect } from "react";
 import { useAuth } from "../config/Auth";
 import { LoadingText } from "../components/loaderText";
 
-const FormWrapper = styled.form`
+export const FormWrapper = styled.form`
   box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
   border-radius: 32px;
   padding: 48px 64px;
 `;
-const Section = styled.section`
+export const Section = styled.section`
   margin: 100px;
   display: flex;
   justify-content: space-between;
 `;
-const TitlePage = styled.p`
+
+export const TitlePage = styled.p`
   font-family: "Inter";
   font-weight: 600;
   font-size: 36px;
@@ -33,9 +34,11 @@ export const TitleInput = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  margin-top: 0px;
+  margin-bottom: 7px;
 `;
 
-const Text = styled.p`
+export const Text = styled.p`
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -57,6 +60,8 @@ export const Input = styled.input`
 export const InputWrapper = styled.div`
   display: flex;
   align-items: stretch;
+  margin-bottom: 8px;
+  margin-top: 0px;
 `;
 
 export const SubmitBtn = styled.button`
@@ -71,6 +76,18 @@ export const SubmitBtn = styled.button`
   font-weight: 600;
   font-size: 14px;
   line-height: 14px;
+`;
+
+export const Format = styled.p`
+  font-family: Inter;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #89939e;
+  margin-top: 0px;
+  margin-bottom: 20px;
 `;
 
 const Register = () => {
@@ -152,6 +169,9 @@ const Register = () => {
               }}
             />
           </InputWrapper>
+          <Format>
+            Gunakan alamat email yang valid. Contoh : abcde@gmail.com
+          </Format>
 
           <TitleInput>
             Username<RequiredSign>*</RequiredSign>
@@ -166,6 +186,7 @@ const Register = () => {
               }}
             />
           </InputWrapper>
+          <Format>Panjang username 8-30 karakter</Format>
 
           <TitleInput>
             Password<RequiredSign>*</RequiredSign>
@@ -181,6 +202,10 @@ const Register = () => {
               }}
             />
           </InputWrapper>
+          <Format>
+            Panjang password 8-30 karakter, dengan minimal 1 huruf kapital, 1
+            angka, dan 1 tanda baca
+          </Format>
 
           <TitleInput>
             Konfirmasi Password<RequiredSign>*</RequiredSign>
@@ -192,6 +217,9 @@ const Register = () => {
               // required
             />
           </InputWrapper>
+          <Format>
+            Pastikan password yang anda masukkan ulang sama dengan sebelumnya
+          </Format>
 
           <TitleInput>
             Nama Badan Usaha<RequiredSign>*</RequiredSign>
@@ -205,6 +233,10 @@ const Register = () => {
               }
             />
           </InputWrapper>
+          <Format>
+            Gunakan huruf kapital pada setiap awal kata. Contoh : Rahman Travel
+          </Format>
+
           <div
             style={{
               display: "flex",

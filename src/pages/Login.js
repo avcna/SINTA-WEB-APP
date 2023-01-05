@@ -10,70 +10,18 @@ import { useAuth } from "../config/Auth";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../components/Loader";
 import { LoadingText } from "../components/loaderText";
-
-const FormWrapper = styled.form`
-  box-shadow: 0px 8px 16px rgba(171, 190, 209, 0.4);
-  border-radius: 32px;
-  padding: 48px 64px;
-`;
-const Section = styled.section`
-  margin: 100px;
-  display: flex;
-  justify-content: space-between;
-`;
-const TitlePage = styled.p`
-  font-family: "Inter";
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 44px;
-  color: #000000;
-`;
-
-const TitleInput = styled.p`
-  font-family: "Inter";
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-`;
-
-const Text = styled.p`
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #212121;
-`;
-
-const RequiredSign = styled.span`
-  color: red;
-`;
-const Input = styled.input`
-  border: 1px solid #abbed1;
-  border-radius: 6px;
-  padding: 10px 16px;
-  width: 100%;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: stretch;
-`;
-
-const SubmitBtn = styled.button`
-  padding: 16px;
-  gap: 10px;
-  background: #0053ad;
-  border-radius: 8px;
-  border: none;
-  color: white;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 14px;
-  width: 170px;
-`;
+import {
+  Format,
+  FormWrapper,
+  Input,
+  InputWrapper,
+  RequiredSign,
+  Section,
+  SubmitBtn,
+  Text,
+  TitleInput,
+  TitlePage,
+} from "./Register";
 
 const Login = () => {
   useEffect(() => {
@@ -137,6 +85,9 @@ const Login = () => {
               }
             />
           </InputWrapper>
+          <Format>
+            Pastikan alamat email/username yang anda masukkan sudah terdaftar
+          </Format>
 
           <TitleInput>
             Password<RequiredSign>*</RequiredSign>
@@ -151,6 +102,8 @@ const Login = () => {
               }
             />
           </InputWrapper>
+          <Format>Pastikan password yang anda masukkan benar</Format>
+
           <div
             style={{
               display: "flex",
