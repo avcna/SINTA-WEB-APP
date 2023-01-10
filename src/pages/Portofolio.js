@@ -43,7 +43,9 @@ const Portofolio = () => {
     <>
       <Layout style={{ background: "none" }}>
         <NavbarAdm />
-        <Content style={{ padding: "39px 39px" }}>
+        <Content
+          style={{ padding: "39px 39px", borderLeft: "1px solid #ABBED1" }}
+        >
           <Dashboard>Dashboard Agen</Dashboard>
           <Info>Halo, Selamat datang di task management dashboard agen</Info>
           <Title>Form Upload Portofolio</Title>

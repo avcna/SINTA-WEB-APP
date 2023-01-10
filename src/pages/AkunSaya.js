@@ -17,7 +17,7 @@ const AkunSaya = () => {
     <>
       <Layout style={{ background: "none" }}>
         <NavbarAdm />
-        <Content>
+        <Content style={{ borderLeft: "1px solid #ABBED1" }}>
           <Wrapper>
             <Dashboard>Akun Anda</Dashboard>
             <Row gutter={[48, 28]}>

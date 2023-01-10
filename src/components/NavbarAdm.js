@@ -37,8 +37,10 @@ const NavbarAdm = () => {
     <>
       <Sider
         style={{
-          background: "none",
+          background: "white",
           height: "100%",
+          position: "sticky",
+          top: "0",
         }}
       >
         <span

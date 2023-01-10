@@ -33,7 +33,7 @@ const ProfilSaya = () => {
         }}
       >
         <NavbarAdm />
-        <Content>
+        <Content style={{ borderLeft: "1px solid #ABBED1" }}>
           <Wrapper>
             <Dashboard>Profil Utama Saya</Dashboard>
             <Row gutter={[48, 28]}>

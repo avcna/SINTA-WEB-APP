@@ -106,6 +106,7 @@ const Register = () => {
     password: "",
     namaBadanUsaha: "",
   });
+
   const [formsL, setFormsL] = useState({
     email: "",
     password: "",
@@ -140,12 +141,12 @@ const Register = () => {
             navigate("/beranda", { replace: true });
           }
         } catch (error) {
-          console.log(error);
+          console.log(error.response);
         }
       }
       setLoad(false);
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
   return (

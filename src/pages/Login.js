@@ -63,7 +63,7 @@ const Login = () => {
       }
       setLoad(false);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.message);
     }
   };
   return (
@@ -72,7 +72,7 @@ const Login = () => {
       <Section>
         <img src={agent} />
         <FormWrapper onSubmit={handleLogin}>
-          <TitlePage>Daftarkan Akunmu Disini</TitlePage>
+          <TitlePage>Selamat Datang Agen</TitlePage>
           <TitleInput>
             Email/Username<RequiredSign>*</RequiredSign>
           </TitleInput>

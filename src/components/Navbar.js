@@ -3,7 +3,7 @@ import { NavLink as Link } from "react-router-dom";
 import logo from "../assets/user/logo.svg";
 
 const Nav = styled.nav`
-  padding: 32px 100px 21px;
+  padding: 20px 100px;
 `;
 
 const NavMenu = styled.div``;
@@ -28,13 +28,28 @@ const Navbrand = styled(Link)`
   margin-top: 64px;
 `;
 
+const NavBrand = () => {
+  return (
+    <Nav style={{ paddingBottom: "0px" }}>
+      <Navbrand to="/">
+        <img src={logo}></img>
+      </Navbrand>
+    </Nav>
+  );
+};
+
 const Navbar = () => {
   return (
     <>
-      <Nav>
-        <Navbrand to="/">
-          <img src={logo}></img>
-        </Navbrand>
+      <NavBrand />
+      <Nav
+        style={{
+          background: "white",
+          position: "sticky",
+          top: "0",
+          zIndex: "5",
+        }}
+      >
         <NavMenu>
           <NavLink to="/tripDalamNegeri">Trip Dalam Negeri</NavLink>
           <NavLink to="/tripLuarNegeri">Trip Luar Negeri</NavLink>
