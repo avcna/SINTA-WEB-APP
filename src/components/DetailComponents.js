@@ -49,7 +49,9 @@ export const Deskripsi = ({ deskripsi }) => {
     <>
       <Section>
         <TitleDesc>Deskripsi Paket Wisata</TitleDesc>
-        <Desc>{deskripsi}</Desc>
+        {deskripsi.map((deskripsi) => {
+          return <Desc>{deskripsi.description}</Desc>;
+        })}
       </Section>
     </>
   );
@@ -97,11 +99,15 @@ export const Fasilitas = ({ fasilitasTermasuk, fasilitasTidakTermasuk }) => {
         <TitleDesc style={{ color: "#009262" }}>
           Fasilitas Yang Sudah Termasuk Dalam Paket Wisata
         </TitleDesc>
-        <Desc>{fasilitasTermasuk}</Desc>
+        {fasilitasTermasuk.map((fasilitasTermasuk) => {
+          return <Desc>{fasilitasTermasuk.fasilitasTermasuk}</Desc>;
+        })}
         <TitleDesc style={{ color: "#E02B1D" }}>
           Fasilitas Yang Tidak Termasuk Dalam Paket Wisata
         </TitleDesc>
-        <Desc>{fasilitasTidakTermasuk}</Desc>
+        {fasilitasTidakTermasuk.map((fasilitasTidakTermasuk) => {
+          return <Desc>{fasilitasTidakTermasuk.fasilitasTermasuk}</Desc>;
+        })}
       </Section>
     </>
   );

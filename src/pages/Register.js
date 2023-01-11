@@ -55,6 +55,16 @@ export const Input = styled.input`
   border-radius: 6px;
   padding: 12px 16px;
   width: 100%;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* or 171% */
+
+  /* Grey */
+
+  color: #717171;
 `;
 
 export const InputWrapper = styled.div`

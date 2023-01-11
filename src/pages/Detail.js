@@ -66,7 +66,9 @@ const Detail = () => {
   const [detail, setDetail] = useState({
     idAgent: 0,
     nama: "",
-    deskripsi: "",
+    fotoProfil: null,
+    judul: "",
+    deskripsi: [],
     informasiPenting: "",
     rundown: "",
     fasilitasTermasuk: [],
@@ -90,7 +92,9 @@ const Detail = () => {
       console.log("sukses");
       setDetail({
         nama: response.data.data.namaBadanUsaha,
-        deskripsi: response.data.data.trip[0].deskripsi.judul,
+        fotoProfil: response.data.data.fotoProfil,
+        judul: response.data.data.trip[0].deskripsi.judul,
+        deskripsi: response.data.data.trip[0].deskripsi.detailDestinasi,
         informasiPenting: response.data.data.trip[0].informasiPenting,
         rundown: response.data.data.trip[0].linkRundown,
         fasilitasTermasuk: response.data.data.trip[0].fasilitasTermasuk,
@@ -98,6 +102,7 @@ const Detail = () => {
           response.data.data.trip[0].fasilitasTidakTermasuk,
         wa: response.data.data.whatsappKantor,
       });
+      console.log(response.data.data.trip[0].deskripsi.detailDestinasi[0].id);
       setLoad(false);
     } catch (error) {
       console.log(error);
@@ -159,7 +164,7 @@ const Detail = () => {
                 Harga
               </NavLink>
             </Nav>
-            <Title>{detail.deskripsi}</Title>
+            <Title>{detail.judul}</Title>
           </Section>
           {load && <Loading />}
           {value == "deskripsi" ? (
@@ -181,7 +186,7 @@ const Detail = () => {
           <ContactUs wa={detail.wa} />
         </Content>
         <Sider style={{ background: "none" }} width={462}>
-          <ProfilArea nama={detail.nama} />
+          <ProfilArea nama={detail.nama} foto={detail.fotoProfil} />
         </Sider>
       </Layout>
     </>

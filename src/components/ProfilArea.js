@@ -47,12 +47,11 @@ const Foto = styled.div`
   width: 99px;
   height: 99px;
   border-radius: 100%;
-  background: red;
   position: absolute;
   bottom: 0px;
 `;
 
-export const ProfilArea = ({ id, nama }) => {
+export const ProfilArea = ({ id, nama, foto }) => {
   return (
     <>
       <Div>
@@ -64,7 +63,12 @@ export const ProfilArea = ({ id, nama }) => {
           }}
         >
           <Col flex="99px" style={{ marginRight: "32px" }}>
-            <Foto />
+            <Foto
+              style={{
+                backgroundSize: "99px 99px",
+                background: `url(data:image/jpeg;base64,${foto})`,
+              }}
+            />
           </Col>
           <Col flex="auto">
             <Nama>{nama}</Nama>
@@ -74,9 +78,6 @@ export const ProfilArea = ({ id, nama }) => {
           </Col>
         </Row>
         <Row justify="space-between" style={{ marginBottom: "24px" }}>
-          {/* <Col span={24}>
-            <Nama>Jangkau Kami Melalui :</Nama>
-          </Col> */}
           <Col>
             <img src={lokasi} />
           </Col>

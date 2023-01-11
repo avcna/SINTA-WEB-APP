@@ -16,7 +16,7 @@ import { FormUploadPaketWisata } from "../components/PaketWisataComponents";
 
 const { Sider, Content } = Layout;
 
-const Button = styled.button`
+export const Button = styled.button`
   background: #0053ad;
   border-radius: 50px;
   padding: 16px 24px;

@@ -8,11 +8,16 @@ import fileBtn from "../assets/svg/addFile.svg";
 
 const { Content } = Layout;
 
-const TextArea = styled.textarea`
+export const TextArea = styled.textarea`
   border: 1px solid #abbed1;
   border-radius: 6px;
   padding: 12px 16px;
   width: 100%;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
 `;
 
 const ProfilSaya = () => {
