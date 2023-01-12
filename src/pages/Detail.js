@@ -91,6 +91,7 @@ const Detail = () => {
 
       console.log("sukses");
       setDetail({
+        idAgent: response.data.data.id,
         nama: response.data.data.namaBadanUsaha,
         fotoProfil: response.data.data.fotoProfil,
         judul: response.data.data.trip[0].deskripsi.judul,
@@ -186,7 +187,11 @@ const Detail = () => {
           <ContactUs wa={detail.wa} />
         </Content>
         <Sider style={{ background: "none" }} width={462}>
-          <ProfilArea nama={detail.nama} foto={detail.fotoProfil} />
+          <ProfilArea
+            id={detail.idAgent}
+            nama={detail.nama}
+            foto={detail.fotoProfil}
+          />
         </Sider>
       </Layout>
     </>

@@ -72,7 +72,7 @@ export const ProfilArea = ({ id, nama, foto }) => {
           </Col>
           <Col flex="auto">
             <Nama>{nama}</Nama>
-            <NavLink to="/profile">
+            <NavLink to={`/profile/${id}`}>
               <ProfileBtn>Lihat Profil</ProfileBtn>
             </NavLink>
           </Col>

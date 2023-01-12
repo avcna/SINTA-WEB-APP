@@ -52,7 +52,7 @@ function App() {
               element={<BergabungMenjadiAgent />}
             />
             <Route path="/detail/:idTrip" element={<Detail />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:idAgen" element={<Profile />} />
             <Route
               path="/register"
               element={
