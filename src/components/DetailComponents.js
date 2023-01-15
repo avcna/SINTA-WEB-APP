@@ -1,3 +1,4 @@
+import { Image } from "antd";
 import styled from "styled-components";
 import { Title } from "../pages/Home";
 import "../pages/style.css";
@@ -45,12 +46,27 @@ const Button = styled.button`
 `;
 
 export const Deskripsi = ({ deskripsi }) => {
+  let count = 0;
   return (
     <>
       <Section>
         <TitleDesc>Deskripsi Paket Wisata</TitleDesc>
         {deskripsi.map((deskripsi) => {
-          return <Desc>{deskripsi.description}</Desc>;
+          count++;
+          return (
+            <>
+              {" "}
+              <Desc style={{ fontWeight: "bold" }}>
+                Destinasi ke-{count} : {deskripsi.title}
+              </Desc>
+              <img
+                width={800}
+                alt="foto"
+                src={`data:image/jpeg;base64,${deskripsi.image}`}
+              />
+              <Desc>{deskripsi.description}</Desc>
+            </>
+          );
         })}
       </Section>
     </>

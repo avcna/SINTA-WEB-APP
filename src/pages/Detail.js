@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import Card from "../components/Card";
 import { ProfilArea } from "../components/ProfilArea";
 import { Loading } from "../components/Loader";
+import Footer from "../components/Footer";
 
 const { Sider, Content } = Layout;
 
@@ -103,7 +104,9 @@ const Detail = () => {
           response.data.data.trip[0].fasilitasTidakTermasuk,
         wa: response.data.data.whatsappKantor,
       });
-      console.log(response.data.data.trip[0].deskripsi.detailDestinasi[0].id);
+      console.log(
+        response.data.data.trip[0].deskripsi.detailDestinasi[0].image
+      );
       setLoad(false);
     } catch (error) {
       console.log(error);
@@ -120,8 +123,8 @@ const Detail = () => {
       <CarouselDiv1
         style={{ background: `url(${Carousel1})`, backgroundSize: "cover" }}
       />
-      <Layout>
-        <Content>
+      <Layout style={{ background: "none" }}>
+        <Content style={{ background: "none" }}>
           <Section>
             <Nav>
               <NavLink
@@ -194,6 +197,7 @@ const Detail = () => {
           />
         </Sider>
       </Layout>
+      <Footer />
     </>
   );
 };

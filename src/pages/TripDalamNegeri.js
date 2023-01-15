@@ -41,7 +41,6 @@ const TDN = () => {
     fetchTDN();
   }, []);
 
-  // const [message, setMessage] = useState([]);
   const passData = (trip) => {
     setTrip(trip);
     console.log(trip);
