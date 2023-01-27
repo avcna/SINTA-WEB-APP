@@ -1,3 +1,22 @@
+export const quest = [
+  {
+    q: "Bagaimana Cara Menjadi Agent?",
+    a: "Dengan cara bergabung menjadi agent dan melakukan login",
+  },
+  {
+    q: "Apa keuntungan menjadi agent?",
+    a: "Dapat mempublikasikan bisnis travel dengan lebih mudah dan dijangkau oleh ribuan orang",
+  },
+  {
+    q: "Bagaimana Cara Menjadi Agent?",
+    a: "Dengan cara bergabung menjadi agent dan melakukan login",
+  },
+  {
+    q: "Apa keuntungan menjadi agent?",
+    a: "Dapat mempublikasikan bisnis travel dengan lebih mudah dan dijangkau oleh ribuan orang",
+  },
+];
+
 const agent = {
   message: "sukses mendapatkan agent",
   code: 200,

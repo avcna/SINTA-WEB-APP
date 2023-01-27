@@ -18,6 +18,7 @@ import PaketWisata from "./pages/PaketWisata";
 import { AuthContext } from "./config/Auth";
 import { PrivateRoute, RestrictedRoute } from "./config/PrivateRoute";
 import { useState } from "react";
+import Premium from "./pages/Premium";
 
 function App() {
   const isAnyToken = JSON.parse(localStorage.getItem("token"));
@@ -106,6 +107,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <PaketWisata />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/premium"
+              element={
+                <PrivateRoute>
+                  <Premium />
                 </PrivateRoute>
               }
             />

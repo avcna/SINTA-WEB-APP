@@ -13,12 +13,14 @@ import { useContext } from "react";
 import { useAuth } from "../config/Auth";
 import { useState } from "react";
 import { sintaAPI } from "../config/Api";
+import { Loading } from "../components/Loader";
 
 const { Sider, Content } = Layout;
 
 const Beranda = () => {
   const [trip, setTrip] = useState(["tes"]);
   const [porto, setPorto] = useState(["tes"]);
+  const [load, setLoad] = useState(true);
 
   const { user } = useAuth();
   console.log(user);
@@ -32,11 +34,13 @@ const Beranda = () => {
   }, []);
 
   const checkTrip = async () => {
+    setLoad(true);
     try {
       const response = await sintaAPI.get(`/agent/get/${user}`).then((res) => {
         setTrip(res.data.data.trip);
         setPorto(res.data.data.portofolio);
       });
+      setLoad(false);
     } catch (error) {
       console.log(error.response);
     }
@@ -55,27 +59,33 @@ const Beranda = () => {
             <Dashboard>Dashboard Agen</Dashboard>
             <Info>Halo, Selamat datang di task management dashboard agen</Info>
 
-            <Dashboard>Paket Wisata</Dashboard>
-            {trip.length === 0 ? (
-              <EmptyPaketwisata />
+            {load ? (
+              <Loading />
             ) : (
-              <Row>
-                <Col span={6}>
-                  <Card />
-                </Col>
-                <Col span={6}>
-                  <Card />
-                </Col>
-                <Col span={6}>
-                  <Card />
-                </Col>
-                <Col span={6}>
-                  <Card />
-                </Col>
-              </Row>
+              <>
+                <Dashboard>Paket Wisata</Dashboard>
+                {trip.length === 0 ? (
+                  <EmptyPaketwisata />
+                ) : (
+                  <Row>
+                    <Col span={6}>
+                      <Card />
+                    </Col>
+                    <Col span={6}>
+                      <Card />
+                    </Col>
+                    <Col span={6}>
+                      <Card />
+                    </Col>
+                    <Col span={6}>
+                      <Card />
+                    </Col>
+                  </Row>
+                )}
+                <Dashboard>Portofolio</Dashboard>
+                {porto.length === 0 ? <EmptyPortofolio /> : "hai"}
+              </>
             )}
-            <Dashboard>Portofolio</Dashboard>
-            {porto.length === 0 ? <EmptyPortofolio /> : "hai"}
           </Wrapper>
         </Content>
       </Layout>
