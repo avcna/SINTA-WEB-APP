@@ -9,6 +9,7 @@ import line from "../assets/profilArea/line.svg";
 import fb from "../assets/profilArea/fb.svg";
 import twt from "../assets/profilArea/twitter.svg";
 import { NavLink } from "react-router-dom";
+import defaultProfil from "../assets/profilArea/dummy-profile-pic.png";
 
 const Div = styled.div`
   padding: 30px 28px;
@@ -63,12 +64,21 @@ export const ProfilArea = ({ id, nama, foto }) => {
           }}
         >
           <Col flex="99px" style={{ marginRight: "32px" }}>
-            <Foto
-              style={{
-                backgroundSize: "99px 99px",
-                background: `url(data:image/jpeg;base64,${foto})`,
-              }}
-            />
+            {foto === null ? (
+              <Foto
+                style={{
+                  backgroundSize: "99px 99px",
+                  background: `url(${defaultProfil})`,
+                }}
+              />
+            ) : (
+              <Foto
+                style={{
+                  backgroundSize: "99px 99px",
+                  background: `url(data:image/jpeg;base64,${foto})`,
+                }}
+              />
+            )}
           </Col>
           <Col flex="auto">
             <Nama>{nama}</Nama>

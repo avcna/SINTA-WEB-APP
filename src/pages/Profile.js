@@ -114,7 +114,6 @@ const Profile = () => {
               setValue("paket wisata");
             }}
           >
-            <Rumah />
             Paket Wisata
           </NavLink>
           <NavLink

@@ -73,7 +73,7 @@ const FilterHarga = ({ passData, kategori }) => {
           min="0"
           max="100000000"
           // value="0"
-          step="5000000"
+          step="2000000"
           style={{ width: "100%" }}
           onChange={(e) => {
             setPrice(e.target.value);

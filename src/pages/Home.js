@@ -174,6 +174,7 @@ const Landing = () => {
               return (
                 <Col span={6} key={id} {...trip}>
                   <Card
+                    id={id}
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
@@ -204,6 +205,7 @@ const Landing = () => {
               return (
                 <Col span={6} key={id} {...trips}>
                   <Card
+                    id={id}
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
@@ -225,6 +227,7 @@ const Landing = () => {
               return (
                 <Col span={6} key={id} {...tripHarga}>
                   <Card
+                    id={id}
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
@@ -246,6 +249,7 @@ const Landing = () => {
               return (
                 <Col key={id} {...tripReq}>
                   <Card
+                    id={id}
                     judul={deskripsi.judul}
                     kota={kota}
                     provinsi={provinsi}
